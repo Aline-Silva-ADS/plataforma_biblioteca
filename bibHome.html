@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barra de Navegação Lateral</title>
+  <!-- Font Awesome CDN para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <nav id="sidebar" aria-label="Barra de navegação lateral">
+    <button id="btn-toggle" aria-label="Alternar menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul>
+      <li class="active" data-link="home">
+        <a href="#home">
+          <i class="fas fa-home" aria-hidden="true"></i>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li data-link="buscar">
+        <a href="#buscar">
+          <i class="fas fa-book" aria-hidden="true"></i>
+          <span class="text">Buscar livros</span>
+        </a>
+      </li>
+      <li data-link="emprestimos">
+        <a href="#emprestimos">
+          <i class="fas fa-handshake"></i>
+          <span class="text">Empréstimos</span>
+        </a>
+      </li>
+      <li class="menu-hamburger">
+        <a href="#menu" id="open-right-menu">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+          <span class="text">Menu</span>
+        </a>
+      </li>
+      <!-- Itens que serão movidos para o menu lateral direito -->
+      <li data-link="notificacoes" class="hidden-item">
+        <a href="#notificacoes">
+          <i class="fas fa-bell" aria-hidden="true"></i>
+          <span class="text">Notificações</span>
+        </a>
+      </li>
+      <li data-link="sair" class="hidden-item">
+        <a href="#sair">
+          <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+          <span class="text">Sair</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Menu lateral direito -->
+  <div id="right-sidebar" aria-label="Menu lateral direito">
+    <div class="sidebar-header">
+      <h3>Menu</h3>
+      <button id="close-right-sidebar" aria-label="Fechar menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul>
+      <li data-link="notificacoes">
+        <a href="#notificacoes">
+          <i class="fas fa-bell" aria-hidden="true"></i>
+          <span>Notificações</span>
+        </a>
+      </li>
+      <li data-link="sair">
+        <a href="#sair">
+          <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+          <span>Sair</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Overlay para fechar menu -->
+  <div id="overlay"></div>
+
+  <main class="content" tabindex="-1">
+    <form aria-label="Formulário de busca de livros" id="searchForm">
+      <input aria-label="Campo de busca de livros" autocomplete="off" id="searchInput" placeholder="Buscar livros..."
+        type="search" />
+      <select aria-label="Selecionar campo para busca" id="searchField">
+        <option selected value="title">Nome</option>
+        <option value="author">Autor</option>
+        <option value="category">Categoria</option>
+      </select>
+      <button aria-label="Botão para executar busca" id="searchButton" type="submit">
+        <span aria-hidden="true"></span> Buscar
+      </button>
+    </form>
+    <div aria-atomic="true" aria-live="polite" id="bookGrid">
+      <div aria-label="Livro O Senhor dos Anéis, gêneros Fantasia e Aventura" class="book-card"
+        data-author="J.R.R. Tolkien" data-category="Fantasia,Aventura" data-title="O Senhor dos Anéis" role="article"
+        tabindex="0">
+        <img
+          alt="Capa do livro O Senhor dos Anéis, uma ilustração de fantasia com anéis dourados brilhantes e uma paisagem épica ao fundo"
+          height="180" loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/bce2b2a8-89b2-4e34-cded-70c0616e21b8.jpg" width="180" />
+        <div class="book-content">
+          <h3>O Senhor dos Anéis</h3>
+          <p class="author">J.R.R. Tolkien</p>
+          <div class="tags">
+            <span class="book-tag" tabindex="0">Fantasia</span>
+            <span class="book-tag" tabindex="0">Aventura</span>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Livro 1984, gênero Distopia" class="book-card" data-author="George Orwell"
+        data-category="Distopia" data-title="1984" role="article" tabindex="0">
+        <img alt="Capa do livro 1984, uma ilustração sombria com elementos de vigilância e controle totalitário"
+          height="180" loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/e5b51b2c-7f89-4955-a087-48981f4f383a.jpg" width="180" />
+        <div class="book-content">
+          <h3>1984</h3>
+          <p class="author">George Orwell</p>
+          <div class="tags">
+            <span class="book-tag" tabindex="0">Distopia</span>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Livro Dom Casmurro, gênero Romance" class="book-card" data-author="Machado de Assis"
+        data-category="Romance" data-title="Dom Casmurro" role="article" tabindex="0">
+        <img alt="Capa do livro Dom Casmurro, retrato clássico de um homem pensativo com fundo de época" height="180"
+          loading="lazy" src="https://storage.googleapis.com/a1aa/image/33aa84ad-e8b5-4d69-33a2-6d13aed85193.jpg"
+          width="180" />
+        <div class="book-content">
+          <h3>Dom Casmurro</h3>
+          <p class="author">Machado de Assis</p>
+          <div class="tags">
+            <span class="book-tag" tabindex="0">Romance</span>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Livro O Pequeno Príncipe, gênero Infantil" class="book-card"
+        data-author="Antoine de Saint-Exupéry" data-category="Infantil,Fábula" data-title="O Pequeno Príncipe"
+        role="article" tabindex="0">
+        <img
+          alt="Capa do livro O Pequeno Príncipe, ilustração delicada de um menino com uma capa amarela e estrelas ao fundo"
+          height="180" loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/ec361706-271f-4917-bda4-eea1ecb57a53.jpg" width="180" />
+        <div class="book-content">
+          <h3>O Pequeno Príncipe</h3>
+          <p class="author">Antoine de Saint-Exupéry</p>
+          <div class="tags">
+            <span class="book-tag" tabindex="0">Infantil</span>
+            <span class="book-tag" tabindex="0">Fábula</span>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Livro A Revolução dos Bichos, gênero Satírico" class="book-card" data-author="George Orwell"
+        data-category="Satírico,Política" data-title="A Revolução dos Bichos" role="article" tabindex="0">
+        <img alt="Capa do livro A Revolução dos Bichos, ilustração de animais em uma fazenda com um estilo satírico"
+          height="180" loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/08a4355e-39d4-4f5f-5c60-aab7827cc4d6.jpg" width="180" />
+        <div class="book-content">
+          <h3>A Revolução dos Bichos</h3>
+          <p class="author">George Orwell</p>
+          <div class="tags">
+            <span class="book-tag" tabindex="0">Satírico</span>
+            <span class="book-tag" tabindex="0">Política</span>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Livro Memórias Póstumas de Brás Cubas, gênero Romance" class="book-card"
+        data-author="Machado de Assis" data-category="Romance" data-title="Memórias Póstumas de Brás Cubas"
+        role="article" tabindex="0">
+        <img
+          alt="Capa do livro Memórias Póstumas de Brás Cubas, retrato antigo de um homem com expressão pensativa e fundo neutro"
+          height="180" loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/f8374f94-579b-44fe-2463-a24d39559f0c.jpg" width="180" />
+        <div class="book-content">
+          <h3>Memórias Póstumas de Brás Cubas</h3>
+          <p class="author">Machado de Assis</p>
+          <div class="tags">
+            <span class="book-tag" tabindex="0">Romance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+<script src="assets/js/script.js"></script>
+</body>
+
+</html>
