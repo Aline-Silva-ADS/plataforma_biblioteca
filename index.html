@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Login Biblioteca</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
-
 <body>
-
-    <main class="main-flex">
-        <div class="card-padrao" id="card-login">
-            <div class="texto-login">
-                <h1>Login</h1>
+    <div class="main-flex">
+        <section class="card-padrao">
+            <h1 class="login-titulo">Login</h1>
+            <form class="form-login">
+                <label for="email" class="label-login">E-mail</label>
+                
+                <input type="email" id="email" name="email" class="input-padrao" autocomplete="username" required>
+                
+                <label for="senha" class="label-login">Senha</label>
+                <div class="senha-container">
+                    <input type="password" id="senha" name="senha" class="input-padrao" autocomplete="current-password" required>
+                    <button type="button" class="toggle-btn" id="toggleSenha">
+                        <img src="assets/icon/visivel.svg" alt="Mostrar senha" class="toggle-icon">
+                    </button>
+                </div>
+                <button type="submit" class="btn-padrao">Entrar</button>
+            </form>
+            <div class="links-login">
+                <a href="cadastro.html" class="cadastro-link">Cadastre-se</a>
+                <a href="recuperacaoSenha.html" class="esqueceu-link">Esqueceu a senha?</a>
             </div>
-            <div class="form-login">
-                <form action="">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="input-padrao">
-                    <label for="senha">Senha</label>
-                    <div class="senha-container">
-                        <input type="password" name="senha" id="senha" class="input-padrao">
-                        <button type="button" id="toggleSenha">
-                            <i class="toggle-icon">
-                                <img src="assets/icon/visivel.svg">
-                            </i>
-                        </button>
-                    </div>
-                    <div class="container-btn">
-                        <a href="usuarioHome.html" class="btn-padrao btn-full">
-                            Entrar
-                        </a>
-                    </div>
-                </form>
-            </div>
-            <div class="esqueceu-senha">
-                <a href="recuperacaoSenha.html">Esqueceu a senha?</a>
-            </div>
-        </div>
-    </main>
+        </section>
+    </div>
 </body>
-
 </html>
