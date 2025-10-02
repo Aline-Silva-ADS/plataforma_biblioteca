@@ -6,6 +6,7 @@
     --cor-texto: #333;
     --cor-branco: #fff;
     --cor-link: #8000ff;
+    --cor-cinza-escuro: #535353;
     --sombra-card: 0 2px 8px rgba(80, 0, 255, 0.08);
     --radius-card: 12px;
     --radius-input: 8px;
@@ -15,6 +16,16 @@
     --font-size-titulo-mobile: 1.2rem;
 }
 
+/* configuracao dos icones */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,     /*Controla o preenchimento do ícone.*/
+  'wght' 300,   /*Controla a espessura do traço do ícone.*/
+  'GRAD' 0,     /*Ajusta a "densidade" do traço sem alterar o peso nominal.*/
+  'opsz' 14     /*Ajusta o tamanho "ótico" do ícone.*/
+}
+
+/* configurações globais */
 * {
     padding: 0;
     margin: 0;
@@ -24,9 +35,6 @@ body {
     background: var(--cor-fundo);
     min-height: 100vh;
     font-family: var(--font-principal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .main-flex {
@@ -99,23 +107,16 @@ body {
 .toggle-btn {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    height: 24px;
-    width: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.toggle-icon {
-    width: 22px;
-    height: 22px;
-    filter: invert(22%) sepia(98%) saturate(7473%) hue-rotate(265deg) brightness(97%) contrast(101%);
+    color: var(--cor-cinza-escuro); 
 }
 
 .btn-padrao {
@@ -148,7 +149,7 @@ body {
 .esqueceu-link {
     color: var(--cor-link);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     transition: text-decoration 0.2s;
 }
 

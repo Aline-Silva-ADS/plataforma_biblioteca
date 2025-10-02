@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Biblioteca</title>
     <link rel="stylesheet" href="assets/css/style2.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
     <div class="main-flex">
         <section class="card-padrao">
@@ -22,18 +26,19 @@
 
                 <label for="senha" class="label-login">Senha</label>
                 <div class="senha-container">
-                    <input type="password" id="senha" name="senha" class="input-padrao" autocomplete="new-password" required>
+                    <input type="password" id="senha" name="senha" class="input-padrao" autocomplete="new-password"
+                        required>
                     <button type="button" class="toggle-btn" id="toggleSenha">
-                        <img src="assets/icon/visivel.svg" alt="Mostrar senha" class="toggle-icon">
+                        <span class="material-symbols-outlined">visibility</span>
                     </button>
                 </div>
 
                 <label for="confirmaSenha" class="label-login">Confirme a senha</label>
                 <div class="senha-container">
-                    <input type="password" id="confirmaSenha" name="confirmaSenha" class="input-padrao" autocomplete="new-password" required>
+                    <input type="password" id="confirmaSenha" name="confirmaSenha" class="input-padrao"
+                        autocomplete="new-password" required>
                     <button type="button" class="toggle-btn" id="toggleConfirmaSenha">
-                        <img src="assets/icon/visivel.svg" alt="Mostrar senha" class="toggle-icon">
-                    </button>
+                        <span class="material-symbols-outlined">visibility</span> </button>
                 </div>
 
                 <button type="submit" class="btn-padrao">Salvar</button>
@@ -44,4 +49,5 @@
         </section>
     </div>
 </body>
+
 </html>
