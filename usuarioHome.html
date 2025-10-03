@@ -22,17 +22,18 @@
 
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #fff;
         }
 
         .top-bar {
-            width: 100vw;
+            width: 100%;
             height: 44px;
             background: var(--cor-primaria);
             display: flex;
             align-items: center;
-            padding-left: 18px;
+            position: relative;
         }
 
         .menu-abrir {
@@ -40,6 +41,15 @@
             font-size: 2rem;
             cursor: pointer;
             display: block;
+            margin-left: 18px;
+        }
+
+        .menu-lista-topbar {
+            display: none;
+        }
+
+        .menu-lista-topbar .menu-item {
+            display: none;
         }
 
         .menu-lateral {
@@ -68,8 +78,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px ;
-            max-height: 44px;
+            padding: 0 24px;
+            height: 44px;
             box-sizing: border-box;
         }
 
@@ -81,7 +91,6 @@
             align-items: center;
             margin: 0;
             height: 100%;
-            line-height: 44px;
         }
 
         .menu-fechar {
@@ -92,10 +101,8 @@
             height: 100%;
             display: flex;
             align-items: center;
-            line-height: 44px;
         }
 
-        /* Adicione ao seu <style> ou arquivo CSS */
         .menu-separador {
             border: none;
             border-top: 1px solid #eee;
@@ -147,36 +154,47 @@
 
         @media (min-width: 900px) {
             .top-bar {
-                display: none;
+                display: flex;
+            }
+
+            .menu-abrir {
+                display: none !important;
             }
 
             .menu-lateral {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100vh;
-                width: var(--menu-width-desktop);
-                max-width: var(--menu-width-desktop);
-                border-radius: 0;
-                box-shadow: var(--shadow-menu);
-                border-right: 1px solid var(--cor-borda);
-                transform: none !important;
-                padding-top: 32px;
-                z-index: 1000;
+                display: none !important;
             }
 
-            .menu-fechar {
+            .menu-lista-topbar {
+                display: flex;
+                margin-left: auto;
+                align-items: center;
+                flex-direction: row;
+                gap: 18px;
+                padding-right: 30px;
+            }
+
+            .menu-lista-topbar .menu-item {
+                display: flex;
+                align-items: center;
+                color: #fff;
+                cursor: pointer;
+                color: var(--cor-bg-menu);
+                margin: 0;
+                padding: 4px 12px;
+                font-weight: 500;
+            }
+
+            .menu-lista-topbar .menu-item.active,
+            .menu-lista-topbar .menu-item:hover {
+                background: rgb(255, 255, 255);
+                color: var(--cor-primaria);
+            }
+
+            .menu-icon {
                 display: none;
             }
 
-            .menu-lista {
-                gap: 28px;
-                padding-left: 32px;
-            }
-
-            .menu-item {
-                font-size: 1.13rem;
-            }
         }
     </style>
 </head>
@@ -184,9 +202,26 @@
 <body>
     <div class="top-bar">
         <span class="material-symbols-outlined menu-abrir" id="btnAbrirMenu" title="Abrir menu">menu</span>
+        <ul class="menu-lista menu-lista-topbar">
+            <li class="menu-item active">
+                <span class="material-symbols-outlined menu-icon">menu_book</span>
+                Buscar livros
+            </li>
+            <li class="menu-item">
+                <span class="material-symbols-outlined menu-icon">library_books</span>
+                Meus livros
+            </li>
+            <li class="menu-item">
+                <span class="material-symbols-outlined menu-icon">account_circle</span>
+                Meus Dados
+            </li>
+            <li class="menu-item">
+                <span class="material-symbols-outlined menu-icon">arrow_back</span>
+                Sair
+            </li>
+        </ul>
     </div>
 
-    <!-- ...existing code... -->
     <nav class="menu-lateral" id="menuLateral">
         <div id="menuTopo" class="menu-topo">
             <span id="menu-escrita">Menu</span>
@@ -212,7 +247,6 @@
             </li>
         </ul>
     </nav>
-    <!-- ...existing code... -->
     <script>
         const btnAbrir = document.getElementById('btnAbrirMenu');
         const btnFechar = document.getElementById('btnFecharMenu');
