@@ -1,131 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navbar Colapsável</title>
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #a366ff; /* fundo roxo claro */
-    padding: 0.5rem 1rem;
-    position: relative;
-}
-.navbar-brand {
-    color: #8000ff; /* texto roxo forte */
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-.navbar-toggle {
-    display: block;   /* aparece no mobile */
-    font-size: 2rem;
-    color: #8000ff;  /* roxo forte */
-    cursor: pointer;
-}
-.menu-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid #eee;
-    z-index: 100;
-    display: none;
-    flex-direction: column;
-    padding: 18px 0;
-    animation: fadeIn 0.25s;
-}
-.menu-dropdown.show {
-    display: flex;
-}
-.menu-lista {
-    list-style: none;
-    padding: 0 0 0 18px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #8000ff; /* roxo forte */
-    font-size: 1.08rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    border-radius: 8px;
-    padding: 6px 8px 6px 4px;
-}
-.menu-item:hover, .menu-item.active {
-    background: #e0ccff; /* hover roxo suave */
-    color: #8000ff;
-}
-.menu-icon {
-    font-size: 1.3rem;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px);}
-    to { opacity: 1; transform: translateY(0);}
-}
 
-/* --- DESKTOP --- */
-@media (min-width: 769px) {
-    .navbar-toggle {
-        display: none; /* esconde hambúrguer */
-    }
-    .menu-dropdown {
-        position: static;
-        flex: 1;
-        display: block; /* sempre visível */
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        padding: 0;
-    }
-    .menu-lista {
-        flex-direction: row;
-        justify-content: flex-end;
-        gap: 20px;
-        padding: 0;
-    }
-    .menu-item {
-        border: none;
-        padding: 8px 12px;
-        background: transparent;
-        color: #8000ff; /* mantém cor de destaque */
-    }
-    .menu-item .menu-icon {
-        display: none; /* remove ícones no desktop */
-    }
-    .menu-item.active {
-        border-bottom: 3px solid #8000ff;
-        background: transparent;
-        color: #8000ff;
-    }
-    .menu-item:hover {
-        background: rgba(163, 102, 255, 0.2);
-        color: #8000ff;
-    }
-}
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Responsivo Biblioteca</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        :root {
+            --cor-primaria: #8000ff;
+            --cor-bg-menu: #fff;
+            --cor-icone: #535353;
+            --cor-hover: #f3eaff;
+            --cor-borda: #eee;
+            --radius-menu: 12px;
+            --shadow-menu: 1px 0 6px rgba(0, 0, 0, 0.07);
+            --menu-width-mobile: 80vw;
+            --menu-width-desktop: 260px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+        }
+
+        .top-bar {
+            width: 100vw;
+            height: 44px;
+            background: var(--cor-primaria);
+            display: flex;
+            align-items: center;
+            padding-left: 18px;
+        }
+
+        .menu-abrir {
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            display: block;
+        }
+
+        .menu-lateral {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--menu-width-mobile);
+            max-width: 320px;
+            background: var(--cor-bg-menu);
+            box-shadow: var(--shadow-menu);
+            border-right: 1px solid var(--cor-borda);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .menu-lateral.aberto {
+            transform: translateX(0);
+        }
+
+        .menu-topo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px ;
+            max-height: 44px;
+            box-sizing: border-box;
+        }
+
+        #menu-escrita {
+            font-weight: 600;
+            color: #535353;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            height: 100%;
+            line-height: 44px;
+        }
+
+        .menu-fechar {
+            font-size: 1.5rem;
+            color: var(--cor-primaria);
+            cursor: pointer;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            line-height: 44px;
+        }
+
+        /* Adicione ao seu <style> ou arquivo CSS */
+        .menu-separador {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 0px 0px 12px 0px;
+        }
+
+        .menu-lista {
+            list-style: none;
+            padding: 0 0 0 24px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--cor-icone);
+            font-size: 1.08rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            padding: 6px 8px 6px 4px;
+        }
+
+        .menu-item.active {
+            background: var(--cor-hover);
+            color: var(--cor-primaria);
+            margin-left: 0;
+            margin-right: 24px;
+            padding-right: 24px;
+            width: auto;
+        }
+
+        .menu-item:hover {
+            background: #5353531f;
+            color: var(--cor-primaria);
+            margin-left: 0;
+            margin-right: 24px;
+            padding-right: 24px;
+            width: auto;
+        }
+
+        .menu-icon {
+            font-size: 1.5rem;
+        }
+
+        @media (min-width: 900px) {
+            .top-bar {
+                display: none;
+            }
+
+            .menu-lateral {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: var(--menu-width-desktop);
+                max-width: var(--menu-width-desktop);
+                border-radius: 0;
+                box-shadow: var(--shadow-menu);
+                border-right: 1px solid var(--cor-borda);
+                transform: none !important;
+                padding-top: 32px;
+                z-index: 1000;
+            }
+
+            .menu-fechar {
+                display: none;
+            }
+
+            .menu-lista {
+                gap: 28px;
+                padding-left: 32px;
+            }
+
+            .menu-item {
+                font-size: 1.13rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<nav class="navbar">
-    <div class="navbar-brand">Menu</div>
-    <span class="navbar-toggle" id="navbarToggle">&#9776;</span>
-    <div class="menu-dropdown" id="menuDropdown">
+    <div class="top-bar">
+        <span class="material-symbols-outlined menu-abrir" id="btnAbrirMenu" title="Abrir menu">menu</span>
+    </div>
+
+    <!-- ...existing code... -->
+    <nav class="menu-lateral" id="menuLateral">
+        <div id="menuTopo" class="menu-topo">
+            <span id="menu-escrita">Menu</span>
+            <span class="material-symbols-outlined menu-fechar" id="btnFecharMenu" title="Fechar menu">close</span>
+        </div>
+        <hr class="menu-separador">
         <ul class="menu-lista">
             <li class="menu-item active">
                 <span class="material-symbols-outlined menu-icon">menu_book</span>
@@ -144,34 +211,22 @@
                 Sair
             </li>
         </ul>
-    </div>
-</nav>
-<script>
-const toggle = document.getElementById('navbarToggle');
-const menu = document.getElementById('menuDropdown');
-const menuItems = document.querySelectorAll('.menu-item');
-
-// Abrir/fechar no mobile
-toggle.addEventListener('click', (event) => {
-    menu.classList.toggle('show');
-    event.stopPropagation();
-});
-
-// Fechar ao clicar fora
-document.addEventListener('click', (event) => {
-    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        menu.classList.remove('show');
-    }
-});
-
-// Destacar item ativo
-menuItems.forEach(item => {
-    item.addEventListener('click', () => {
-        menuItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        menu.classList.remove('show'); // fecha ao clicar
-    });
-});
-</script>
+    </nav>
+    <!-- ...existing code... -->
+    <script>
+        const btnAbrir = document.getElementById('btnAbrirMenu');
+        const btnFechar = document.getElementById('btnFecharMenu');
+        const menu = document.getElementById('menuLateral');
+        btnAbrir && btnAbrir.addEventListener('click', () => menu.classList.add('aberto'));
+        btnFechar && btnFechar.addEventListener('click', () => menu.classList.remove('aberto'));
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth < 900) {
+                if (!menu.contains(e.target) && !btnAbrir.contains(e.target)) {
+                    menu.classList.remove('aberto');
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
