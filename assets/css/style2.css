@@ -176,3 +176,135 @@ body {
         margin-top: 10px;
     }
 }
+
+.conteudo-home {
+    padding: 18px 12px 24px 12px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.busca-livros {
+    margin-bottom: 18px;
+}
+
+.form-busca {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.input-busca {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1.5px solid var(--cor-primaria);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background: #fff;
+}
+
+.btn-busca {
+    background: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: background 0.2s;
+}
+
+.btn-busca:hover {
+    background: #4b00b5;
+}
+
+.secao-livros {
+    margin-bottom: 28px;
+}
+
+.secao-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.secao-titulo {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+}
+
+.secao-vermais {
+    color: var(--cor-primaria);
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.livros-grid {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.livro-card {
+    background: none;
+    border-radius: 8px;
+    width: 32vw;
+    max-width: 110px;
+    min-width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.livro-capa {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #d3d3d3;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.livro-info {
+    width: 100%;
+}
+
+.livro-titulo {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #222;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.livro-autor {
+    font-size: 0.92rem;
+    color: #535353;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 600px) {
+    .conteudo-home {
+        padding: 28px 32px 32px 32px;
+    }
+    .livros-grid {
+        gap: 18px;
+    }
+    .livro-card {
+        max-width: 140px;
+        min-width: 120px;
+    }
+}

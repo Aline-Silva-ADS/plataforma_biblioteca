@@ -29,3 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Menu lateral responsivo
+ const btnAbrir = document.getElementById('btnAbrirMenu');
+        const btnFechar = document.getElementById('btnFecharMenu');
+        const menu = document.getElementById('menuLateral');
+        btnAbrir && btnAbrir.addEventListener('click', () => menu.classList.add('aberto'));
+        btnFechar && btnFechar.addEventListener('click', () => menu.classList.remove('aberto'));
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth < 900) {
+                if (!menu.contains(e.target) && !btnAbrir.contains(e.target)) {
+                    menu.classList.remove('aberto');
+                }
+            }
+        });
