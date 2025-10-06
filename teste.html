@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meus Livros</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        /* ===== Reset básico ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #222;
+        }
+
+        /* ===== Top Bar ===== */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #8000ff;
+            color: #fff;
+        }
+
+        .top-bar .menu-abrir {
+            cursor: pointer;
+            font-size: 2rem;
+        }
+
+        /* ===== Menu lateral ===== */
+        .menu-lateral {
+            position: fixed;
+            top: 0;
+            left: -250px; /* escondido no mobile */
+            width: 220px;
+            height: 100%;
+            background: #8000ff;
+            color: #fff;
+            padding: 32px 16px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .menu-lateral.active {
+            left: 0;
+        }
+
+        .menu-lateral a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* ===== Container principal ===== */
+        main.historico-container {
+            max-width: 500px;
+            margin: 16px auto;
+            padding: 0 16px 24px 16px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .historico-titulo {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #23395d;
+            margin: 32px 0 16px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .historico-divider {
+            border: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 16px;
+        }
+
+        /* ===== Cards de livros ===== */
+        .livro-card-historico {
+            background: #fff;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(80, 0, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: padding 0.3s ease, flex-direction 0.3s ease;
+        }
+
+        .livro-card-historico .livro-nome {
+            font-size: 1.08rem;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .livro-card-historico .livro-autor,
+        .livro-card-historico .livro-data {
+            font-size: 0.98rem;
+            color: #535353;
+        }
+
+        .livro-data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .livro-status {
+            display: inline-block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 4px 16px;
+        }
+
+        .status-comigo {
+            background: #4285f4;
+            color: #fff;
+        }
+
+        .status-entregue {
+            background: #34a853;
+            color: #fff;
+        }
+
+        .status-atraso {
+            background: #ea4335;
+            color: #fff;
+        }
+
+        .status-pendente {
+            background: #fbbc05;
+            color: #fff;
+        }
+
+        /* ===== Media Queries ===== */
+        @media (min-width: 600px) {
+            main.historico-container {
+                max-width: 600px;
+                padding: 24px 12px;
+            }
+
+            .livro-card-historico {
+                padding: 20px 28px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            /* Esconder botão de menu no desktop */
+            .top-bar .menu-abrir {
+                display: none;
+            }
+
+            /* Mostrar menu lateral fixo */
+            .menu-lateral {
+                left: 0;
+            }
+
+            main.historico-container {
+                max-width: calc(100% - 240px); /* espaço para menu */
+                margin-left: 240px;
+                padding: 32px;
+            }
+
+            /* Cards alinhados horizontalmente */
+            .livro-card-historico {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 32px;
+                gap: 12px;
+            }
+
+            .livro-card-historico .livro-nome,
+            .livro-card-historico .livro-autor {
+                margin-bottom: 0;
+            }
+
+            .livro-data {
+                justify-content: flex-end;
+                gap: 12px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            main.historico-container {
+                max-width: calc(100% - 300px);
+                margin-left: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <span class="material-symbols-outlined menu-abrir" id="btnAbrirMenu" title="Abrir menu">menu</span>
+        <h1 style="margin-left: 12px; font-size: 1.2rem;">Meus Livros</h1>
+    </div>
+
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="#">Início</a>
+        <a href="#">Meus Livros</a>
+        <a href="#">Configurações</a>
+        <a href="#">Sair</a>
+    </nav>
+
+    <main class="historico-container">
+        <div class="historico-titulo">MEUS LIVROS</div>
+        <hr class="historico-divider">
+
+        <div class="livro-card-historico">
+            <div>
+                <div class="livro-nome">Nome do Livro</div>
+                <div class="livro-autor">Autor: Fulano</div>
+            </div>
+            <div class="livro-data">
+                <span>00/00/0000</span>
+                <span class="livro-status status-comigo">Comigo</span>
+            </div>
+        </div>
+
+        <div class="livro-card-historico">
+            <div>
+                <div class="livro-nome">Nome do Livro</div>
+                <div class="livro-autor">Autor: Ciclano</div>
+            </div>
+            <div class="livro-data">
+                <span>00/00/0000</span>
+                <span class="livro-status status-entregue">Entregue</span>
+            </div>
+        </div>
+
+        <div class="livro-card-historico">
+            <div>
+                <div class="livro-nome">Nome do Livro</div>
+                <div class="livro-autor">Autor: Beltrano</div>
+            </div>
+            <div class="livro-data">
+                <span>00/00/0000</span>
+                <span class="livro-status status-atraso">Em Atraso</span>
+            </div>
+        </div>
+
+        <div class="livro-card-historico">
+            <div>
+                <div class="livro-nome">Nome do Livro</div>
+                <div class="livro-autor">Autor: Fulana</div>
+            </div>
+            <div class="livro-data">
+                <span>00/00/0000</span>
+                <span class="livro-status status-pendente">Pendente</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Toggle menu mobile
+        const btnMenu = document.getElementById("btnAbrirMenu");
+        const menu = document.getElementById("menuLateral");
+
+        btnMenu.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+    </script>
+</body>
+
+</html>
