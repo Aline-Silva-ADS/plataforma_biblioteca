@@ -18,11 +18,15 @@
 
 /* configuracao dos icones */
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,     /*Controla o preenchimento do ícone.*/
-  'wght' 300,   /*Controla a espessura do traço do ícone.*/
-  'GRAD' 0,     /*Ajusta a "densidade" do traço sem alterar o peso nominal.*/
-  'opsz' 14     /*Ajusta o tamanho "ótico" do ícone.*/
+    font-variation-settings:
+        'FILL' 0,
+        /*Controla o preenchimento do ícone.*/
+        'wght' 300,
+        /*Controla a espessura do traço do ícone.*/
+        'GRAD' 0,
+        /*Ajusta a "densidade" do traço sem alterar o peso nominal.*/
+        'opsz' 14
+        /*Ajusta o tamanho "ótico" do ícone.*/
 }
 
 /* configurações globais */
@@ -37,9 +41,15 @@ body {
     font-family: var(--font-principal);
 }
 
+.body-branco {
+    background: var(--cor-branco);
+    padding: 0;
+}
+
 .main-flex {
     width: 100vw;
-    min-height: 100vh; /* Mobile first: evita overflow */
+    min-height: 100vh;
+    /* Mobile first: evita overflow */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +59,7 @@ body {
     background: var(--cor-branco);
     border-radius: var(--radius-card);
     box-shadow: var(--sombra-card);
-    padding: 32px 24px 24px 24px; 
+    padding: 32px 24px 24px 24px;
     max-width: 90vw;
     width: 350px;
     box-sizing: border-box;
@@ -116,7 +126,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--cor-cinza-escuro); 
+    color: var(--cor-cinza-escuro);
 }
 
 .btn-padrao {
@@ -168,9 +178,11 @@ body {
         font-size: var(--font-size-titulo);
         margin-bottom: 16px;
     }
+
     .form-login {
         gap: 5px;
     }
+
     .links-login {
         font-size: var(--font-size-base);
         margin-top: 10px;
@@ -300,11 +312,196 @@ body {
     .conteudo-home {
         padding: 28px 32px 32px 32px;
     }
+
     .livros-grid {
         gap: 18px;
     }
+
     .livro-card {
         max-width: 140px;
         min-width: 120px;
+    }
+}
+
+/* informações dos livros */
+.body-cor {
+    background-color: var(--cor-branco);
+}
+
+.info-livro-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.info-livro-topo-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.info-livro-capa {
+    width: 160px;
+    height: 200px;
+    background: #d3d3d3;
+    border-radius: 8px;
+    margin: 0 auto 18px auto;
+    display: block;
+}
+
+.info-livro-detalhes {
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-center;
+}
+
+.info-livro-nome {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+
+.info-livro-autor {
+    text-align: center;
+    font-size: 1rem;
+    color: #535353;
+    margin-bottom: 12px;
+}
+
+.info-livro-generos {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.info-livro-genero {
+    border: 1.5px solid #8000ff;
+    color: var(--cor-primaria);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 0.98rem;
+    background: var(--cor-branco);
+    cursor: default;
+}
+
+.info-livro-descricao {
+    border-radius: 0;
+    padding: 18px 16px;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 28px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 18px;
+    text-transform: justify;
+}
+
+.info-livro-btn {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 18px auto 0 auto;
+    padding: 12px 0;
+    background: #8000ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.info-livro-btn:hover {
+    background: #4b00b5;
+}
+
+/* Card aprimorado para telas médias */
+
+@media (min-width: 600px) {
+    .centralizar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+        min-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-livro-container {
+        align-self: center;
+        max-width: 500px;
+        padding: 24px 12px;
+        box-shadow: var(--sombra-card);
+        border-radius: var(--radius-card);
+        background: var(--cor-branco);
+        border: 1px solid var(--cor-borda);
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+}
+
+/* Layout horizontal para desktop */
+@media (min-width: 900px) {
+    .info-livro-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 700px;
+        padding: 32px;
+    }
+
+    .info-livro-topo-flex {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .info-livro-capa {
+        margin: 0 32px 0 0;
+        display: inline-block;
+        width: 180px;
+        height: 240px;
+        flex-shrink: 0;
+    }
+
+    .info-livro-detalhes {
+        width: auto;
+        align-self: flex-start;
+        margin-top: 0;
+        margin-left: 0;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .info-livro-descricao {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .info-livro-btn {
+        width: 100%;
+        max-width: 400px;
+        margin: 24px auto 0 auto;
     }
 }
