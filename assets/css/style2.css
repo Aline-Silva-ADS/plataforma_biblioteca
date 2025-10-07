@@ -45,7 +45,7 @@ body {
   background: var(--cor-branco);
   padding: 0;
 }
-
+/* login, esqueceu a senha e cadastro configuracões ================================================ */
 .main-flex {
   width: 100vw;
   min-height: 100vh;
@@ -188,12 +188,7 @@ body {
     margin-top: 10px;
   }
 }
-
-.conteudo-home {
-  padding: 18px 12px 24px 12px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+/* página inicial do usuário */
 
 .busca-livros {
   margin-bottom: 18px;

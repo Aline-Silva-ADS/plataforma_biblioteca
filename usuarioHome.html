@@ -8,136 +8,116 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="assets/css/menu.css">
-    <link rel="stylesheet" href="assets/css/style2.css">
+    
 </head>
 
-<body class="body-branco">
-    <div class="top-bar">
-        <span class="material-symbols-outlined menu-abrir" id="btnAbrirMenu" title="Abrir menu">menu</span>
-        <ul class="menu-lista menu-lista-topbar">
-            <li class="menu-item active">
-                <span class="material-symbols-outlined menu-icon">menu_book</span>
-                Buscar livros
-            </li>
-            <li class="menu-item">
-                <span class="material-symbols-outlined menu-icon">library_books</span>
-                Meus livros
-            </li>
-            <li class="menu-item">
-                <span class="material-symbols-outlined menu-icon">account_circle</span>
-                Meus Dados
-            </li>
-            <li class="menu-item">
-                <span class="material-symbols-outlined menu-icon">arrow_back</span>
-                Sair
-            </li>
-        </ul>
-    </div>
-
-    <nav class="menu-lateral" id="menuLateral">
-        <div id="menuTopo" class="menu-topo">
-            <span id="menu-escrita">Menu</span>
-            <span class="material-symbols-outlined menu-fechar" id="btnFecharMenu" title="Fechar menu">close</span>
+<body>
+    <header class="topbar" role="banner">
+        <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="brand">
+            <span>Biblioteca</span>
         </div>
-        <hr class="menu-separador">
-        <ul class="menu-lista">
-            <li class="menu-item active">
-                <span class="material-symbols-outlined menu-icon">menu_book</span>
-                Buscar livros
-            </li>
-            <li class="menu-item">
-                <span class="material-symbols-outlined menu-icon">library_books</span>
-                Meus livros
-            </li>
-            <li class="menu-item">
-                <span class="material-symbols-outlined menu-icon">account_circle</span>
-                Meus Dados
-            </li>
-            <li class="menu-item">
-                <span class="material-symbols-outlined menu-icon">arrow_back</span>
-                Sair
-            </li>
-        </ul>
-    </nav>
-    <!-- ...existing code... -->
-    <main class="conteudo-home">
-        <section class="busca-livros">
-            <form class="form-busca">
-                <input type="text" class="input-busca" placeholder="Buscar por título">
-                <button type="submit" class="btn-busca">
-                    <span class="material-symbols-outlined">search</span>
-                </button>
-            </form>
-        </section>
+    </header>
 
-        <section class="secao-livros">
-            <div class="secao-topo">
-                <h2 class="secao-titulo">Nome da seção</h2>
-                <a href="#" class="secao-vermais">
-                    ver mais <span class="material-symbols-outlined"
-                        style="font-size:1rem;vertical-align:middle;">chevron_right</span>
+    <div class="layout">
+        <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
+            <div class="nav-group">
+                <a class="nav-item active" href="#home">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Home</span>
                 </a>
             </div>
-            <div class="livros-grid">
-                <div class="livro-card">
-                    <div class="livro-capa"></div>
-                    <div class="livro-info">
-                        <div class="livro-titulo">Nome do livro</div>
-                        <div class="livro-autor">Autor do livro</div>
-                    </div>
-                </div>
-                <div class="livro-card">
-                    <div class="livro-capa"></div>
-                    <div class="livro-info">
-                        <div class="livro-titulo">Nome do livro</div>
-                        <div class="livro-autor">Autor do livro</div>
-                    </div>
-                </div>
-                <div class="livro-card">
-                    <div class="livro-capa"></div>
-                    <div class="livro-info">
-                        <div class="livro-titulo">Nome do livro</div>
-                        <div class="livro-autor">Autor do livro</div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Repita a seção para outras categorias -->
-        <section class="secao-livros">
-            <div class="secao-topo">
-                <h2 class="secao-titulo">Nome da seção</h2>
-                <a href="#" class="secao-vermais">
-                    ver mais <span class="material-symbols-outlined"
-                        style="font-size:1rem;vertical-align:middle;">chevron_right</span>
+            <div class="nav-group">
+                <a class="nav-item " href="#buscar-livros">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Buscar livros</span>
                 </a>
             </div>
-            <div class="livros-grid">
-                <div class="livro-card">
-                    <div class="livro-capa"></div>
-                    <div class="livro-info">
-                        <div class="livro-titulo">Nome do livro</div>
-                        <div class="livro-autor">Autor do livro</div>
-                    </div>
-                </div>
-                <div class="livro-card">
-                    <div class="livro-capa"></div>
-                    <div class="livro-info">
-                        <div class="livro-titulo">Nome do livro</div>
-                        <div class="livro-autor">Autor do livro</div>
-                    </div>
-                </div>
-                <div class="livro-card">
-                    <div class="livro-capa"></div>
-                    <div class="livro-info">
-                        <div class="livro-titulo">Nome do livro</div>
-                        <div class="livro-autor">Autor do livro</div>
-                    </div>
-                </div>
+
+            <div class="nav-group">
+                <a class="nav-item " href="#meus-livros">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Meus livros</span>
+                </a>
             </div>
-        </section>
-    </main>
-    <script src="assets/js/script.js"></script>
+
+            <div class="nav-group">
+                <a class="nav-item" href="#meus-dados">
+                    <span class="material-symbols-outlined">group</span>
+                    <span>Meus Dados</span>
+                </a>
+            </div>
+            <div class="nav-group">
+                <a class="nav-item" href="#meus-dados">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Sair</span>
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="backdrop" id="backdrop"></div>
+
+        <!-- ...existing code... -->
+        <main class="content" role="main">
+            <section class="busca-livros">
+                <form class="form-busca">
+                    <input type="text" class="input-busca" placeholder="Buscar por título">
+                    <button type="submit" class="btn-busca">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </form>
+            </section>
+
+            <section class="secao-livros">
+                <div class="secao-topo">
+                    <h2 class="secao-titulo">Nome da seção</h2>
+                    <a href="#" class="secao-vermais">
+                        ver mais <span class="material-symbols-outlined">chevron_right</span>
+                    </a>
+                </div>
+
+                <div class="carousel-wrapper">
+                  
+                    <div class="livros-grid">
+                        <div class="livro-card">
+                            <div class="livro-capa"></div>
+                            <div class="livro-info">
+                                <div class="livro-titulo">Livro 1</div>
+                                <div class="livro-autor">Autor 1</div>
+                            </div>
+                        </div>
+                        <div class="livro-card">
+                            <div class="livro-capa"></div>
+                            <div class="livro-info">
+                                <div class="livro-titulo">Livro 2</div>
+                                <div class="livro-autor">Autor 2</div>
+                            </div>
+                        </div>
+                        <div class="livro-card">
+                            <div class="livro-capa"></div>
+                            <div class="livro-info">
+                                <div class="livro-titulo">Livro 2</div>
+                                <div class="livro-autor">Autor 2</div>
+                            </div>
+                        </div>
+                        <div class="livro-card">
+                            <div class="livro-capa"></div>
+                            <div class="livro-info">
+                                <div class="livro-titulo">Livro 3</div>
+                                <div class="livro-autor">Autor 3</div>
+                            </div>
+                        </div>
+                        <!-- Adicione quantos livros quiser -->
+                    </div>
+                   
+                </div>
+            </section>
+        </main>
+        <script src="assets/js/script.js"></script>
 </body>
 
 </html>
