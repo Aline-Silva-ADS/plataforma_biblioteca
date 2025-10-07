@@ -14,20 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Toggle para a confirmação de senha
-    const confirmaInput = document.getElementById('confirmaSenha');
-    const toggleConfirmaBtn = document.getElementById('toggleConfirmaSenha');
-    const confirmaIcon = toggleConfirmaBtn.querySelector('.material-symbols-outlined');
 
-    toggleConfirmaBtn.addEventListener('click', function () {
-        if (confirmaInput.type === 'password') {
-            confirmaInput.type = 'text';
-            confirmaIcon.textContent = 'visibility_off';
-        } else {
-            confirmaInput.type = 'password';
-            confirmaIcon.textContent = 'visibility';
-        }
-    });
 });
 // Drawer mobile
 const btn = document.querySelector('.hamburger');
