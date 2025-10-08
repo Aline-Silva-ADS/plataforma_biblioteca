@@ -8,11 +8,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="assets/css/menu.css">
-
-
 </head>
 
 <body>
+    <!-- menu -->
     <header class="topbar" role="banner">
         <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
             <span class="material-symbols-outlined">menu</span>
@@ -21,8 +20,9 @@
             <span>Biblioteca</span>
         </div>
     </header>
-
+    <!-- fim do menu -->
     <div class="layout">
+        <!-- menu lateral -->
         <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
             <div class="nav-group">
                 <a class="nav-item active" href="#home">
@@ -30,21 +30,18 @@
                     <span>Home</span>
                 </a>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item " href="#buscar-livros">
                     <span class="material-symbols-outlined">home</span>
                     <span>Buscar livros</span>
                 </a>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item " href="#meus-livros">
                     <span class="material-symbols-outlined">home</span>
                     <span>Meus livros</span>
                 </a>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item" href="#meus-dados">
                     <span class="material-symbols-outlined">group</span>
@@ -57,34 +54,32 @@
                     <span>Sair</span>
                 </a>
             </div>
-
         </nav>
-
+        <!-- fim do menu lateral -->
         <div class="backdrop" id="backdrop"></div>
-
-        <!-- ...existing code... -->
-        <main class="content " role="main">
-            <div class="info-livro-container">
-                <div class="info-livro-topo-flex">
-                    <img src="assets/img/capa-livro.jpg" alt="Capa do Livro" class="info-livro-capa">
-                    <div class="info-livro-detalhes">
-                        <h2 class="info-livro-nome">Nome do Livro</h2>
-                        <div class="info-livro-autor">Autor do livro</div>
-                        <div class="info-livro-generos">
-                            <span class="info-livro-genero">gênero</span>
-                            <span class="info-livro-genero">gênero</span>
+        <!-- conteúdo -->
+        <main class="content layout" role="main">
+            <div class="info-book-container">
+                <div class="info-book-topo-flex">
+                    <img src="assets/img/capa-livro.jpg" alt="Capa do Livro" class="info-book-cover">
+                    <div class="info-book-details">
+                        <h2 class="info-book-title">Nome do Livro</h2>
+                        <div class="info-book-author">Autor do livro</div>
+                        <div class="info-book-genres">
+                            <span class="info-book-genre">gênero</span>
+                            <span class="info-book-genre">gênero</span>
                         </div>
                     </div>
                 </div>
-                <div class="info-livro-descricao">
+                <div class="info-book-description">
                     There are many variations of passages of Lorem Ipsum available, but the majority have suffered
                     alteration in some form, by injected humour, or randomised words which don't look even slightly
                     believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                     anything
                     embarrassing hidden.
                 </div>
-                <div class="container-btn">
-                    <button class=" btn-padrao info-livro-btn">Emprestar Livro</button>
+                <div class="btn-container">
+                    <button class="btn-padrao info-book-btn">Emprestar Livro</button>
                 </div>
             </div>
         </main>

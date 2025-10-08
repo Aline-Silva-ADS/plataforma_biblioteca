@@ -11,36 +11,34 @@
 </head>
 
 <body>
-    <div class="tela-toda flex">
-        <section class="card-padrao">
-            <h1 class="login-titulo">Cadastro</h1>
+    <div class="content-full flex">
+        <!-- Card de Cadastro -->
+        <section class="card card-login">
+            <h1 class="title-login">Cadastro</h1>
+            <!-- formulario -->
             <form class="form-login">
                 <label for="nome" class="label-login">Nome</label>
-                <input type="text" id="nome" name="nome" class="input-padrao" required>
-
+                <input type="text" id="nome" name="nome" class="input-primary input-login" required>
                 <label for="ra" class="label-login">RA</label>
-                <input type="text" id="ra" name="ra" class="input-padrao" required>
-
+                <input type="text" id="ra" name="ra" class="input-primary input-login" required>
                 <label for="email" class="label-login">E-mail</label>
-                <input type="email" id="email" name="email" class="input-padrao" autocomplete="username" required>
-
+                <input type="email" id="email" name="email" class="input-primary input-login" autocomplete="username" required>
                 <label for="senha" class="label-login">Senha</label>
-                <div class="senha-container">
-                    <input type="password" id="senha" name="senha" class="input-padrao" autocomplete="new-password"
+                <div class="password-container">
+                    <input type="password" id="senha" name="senha" class="input-primary input-login" autocomplete="new-password"
                         required>
                     <button type="button" class="toggle-btn" id="toggleSenha">
                         <span class="material-symbols-outlined">visibility</span>
                     </button>
                 </div>
-
-                
-
-                <button type="submit" class="btn-padrao">Salvar</button>
+                <button type="submit" class="btn btn-login">Salvar</button>
             </form>
+            <!-- fim do formulario -->
             <div class="links-login" style="justify-content: flex-start;">
-                <a href="index.html" class="esqueceu-link">Voltar ao login</a>
+                <a href="index.html" class="links">Voltar ao login</a>
             </div>
         </section>
+        <!-- fim card de cadastro -->
     </div>
     <script src="assets/js/script.js"></script>
 </body>

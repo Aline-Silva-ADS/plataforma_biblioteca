@@ -8,10 +8,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="assets/css/menu.css">
-    
+
 </head>
 
 <body>
+    <!-- menu -->
     <header class="topbar" role="banner">
         <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
             <span class="material-symbols-outlined">menu</span>
@@ -20,8 +21,9 @@
             <span>Biblioteca</span>
         </div>
     </header>
-
+    <!-- fim do menu -->
     <div class="layout">
+        <!-- menu lateral -->
         <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
             <div class="nav-group">
                 <a class="nav-item active" href="#home">
@@ -29,21 +31,18 @@
                     <span>Home</span>
                 </a>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item " href="#buscar-livros">
                     <span class="material-symbols-outlined">home</span>
                     <span>Buscar livros</span>
                 </a>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item " href="#meus-livros">
                     <span class="material-symbols-outlined">home</span>
                     <span>Meus livros</span>
                 </a>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item" href="#meus-dados">
                     <span class="material-symbols-outlined">group</span>
@@ -56,68 +55,70 @@
                     <span>Sair</span>
                 </a>
             </div>
-
         </nav>
-
+        <!-- fim do menu lateral -->
         <div class="backdrop" id="backdrop"></div>
 
-        <!-- ...existing code... -->
-        <main class="content" role="main">
-            <section class="busca-livros">
-                <form class="form-busca">
-                    <input type="text" class="input-busca" placeholder="Buscar por título">
-                    <button type="submit" class="btn-busca">
+        <!-- conteudo principal -->
+        <main class="content " role="main">
+            <!-- barra de busca -->
+            <section class="search-bar">
+                <form class="search-form">
+                    <input type="text" class="input-primary input-search" placeholder="Buscar por título">
+                    <button type="submit" class="btn btn-search">
                         <span class="material-symbols-outlined">search</span>
                     </button>
                 </form>
             </section>
-
-            <section class="secao-livros">
-                <div class="secao-topo">
-                    <h2 class="secao-titulo">Nome da seção</h2>
-                    <a href="#" class="secao-vermais">
+            <!-- fim da barra de busca -->
+            <!-- seção de livros -->
+            <section class="books-section">
+                <div class="section-header">
+                    <h2 class="section-title">Nome da seção</h2>
+                    <a href="#" class="see-more">
                         ver mais <span class="material-symbols-outlined">chevron_right</span>
                     </a>
                 </div>
-
+                <!-- carousel -->
                 <div class="carousel-wrapper">
-                  
-                    <div class="livros-grid">
-                        <div class="livro-card">
-                            <div class="livro-capa"></div>
-                            <div class="livro-info">
-                                <div class="livro-titulo">Livro 1</div>
-                                <div class="livro-autor">Autor 1</div>
+
+                    <div class="books-grid">
+                        <div class="book-card">
+                            <div class="book-cover"></div>
+                            <div class="book-info">
+                                <div class="book-title">Livro 1</div>
+                                <div class="book-author">Autor 1</div>
                             </div>
                         </div>
-                        <div class="livro-card">
-                            <div class="livro-capa"></div>
-                            <div class="livro-info">
-                                <div class="livro-titulo">Livro 2</div>
-                                <div class="livro-autor">Autor 2</div>
+                        <div class="book-card">
+                            <div class="book-cover"></div>
+                            <div class="book-info">
+                                <div class="book-title">Livro 2</div>
+                                <div class="book-author">Autor 2</div>
                             </div>
                         </div>
-                        <div class="livro-card">
-                            <div class="livro-capa"></div>
-                            <div class="livro-info">
-                                <div class="livro-titulo">Livro 2</div>
-                                <div class="livro-autor">Autor 2</div>
+                        <div class="book-card">
+                            <div class="book-cover"></div>
+                            <div class="book-info">
+                                <div class="book-title">Livro 2</div>
+                                <div class="book-author">Autor 2</div>
                             </div>
                         </div>
-                        <div class="livro-card">
-                            <div class="livro-capa"></div>
-                            <div class="livro-info">
-                                <div class="livro-titulo">Livro 3</div>
-                                <div class="livro-autor">Autor 3</div>
+                        <div class="book-card">
+                            <div class="book-cover"></div>
+                            <div class="book-info">
+                                <div class="book-title">Livro 3</div>
+                                <div class="book-author">Autor 3</div>
                             </div>
                         </div>
-                        <!-- Adicione quantos livros quiser -->
                     </div>
-                   
                 </div>
+                <!-- fim do carousel -->
             </section>
+            <!-- fim da seção de livros -->
         </main>
-        <script src="assets/js/script.js"></script>
+    </div>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

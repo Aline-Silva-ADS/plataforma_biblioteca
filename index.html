@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Biblioteca</title>
     <link rel="stylesheet" href="assets/css/menu.css">
     <link rel="stylesheet"
-         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
-    <div class="tela-toda flex">
-         <div class="backdrop" id="backdrop"></div>
-         
-         <!-- Card de Login -->
-        <section class="card-padrao">
-            <h1 class="login-titulo">Login</h1>
+    <div class="content-full flex">
+        <!-- Card de Login -->
+        <section class="card card-login">
+            <h1 class="title-login">Login</h1>
+            <!-- formulario -->
             <form class="form-login">
                 <label for="email" class="label-login">E-mail</label>
-                
-                <input type="email" id="email" name="email" class="input-padrao" autocomplete="username" required>
-                
+                <input type="email" id="email" name="email" class="input-primary input-login" autocomplete="username"
+                    required>
                 <label for="senha" class="label-login">Senha</label>
-                <div class="senha-container">
-                    <input type="password" id="senha" name="senha" class="input-padrao" autocomplete="current-password" required>
+                <div class="password-container">
+                    <input type="password" id="senha" name="senha" class="input-primary input-login"
+                        autocomplete="current-password" required>
                     <button type="button" class="toggle-btn" id="toggleSenha">
                         <span class="material-symbols-outlined">visibility</span>
                     </button>
                 </div>
-                <button type="submit" class="btn-padrao">Entrar</button>
+                <button type="submit" class="btn btn-login">Entrar</button>
             </form>
+            <!-- fim formulario -->
             <div class="links-login">
-                <a href="cadastroUsuario.html" class="cadastro-link">Cadastre-se</a>
-                <a href="recuperacaoSenha.html" class="esqueceu-link">Esqueceu a senha?</a>
+                <a href="cadastroUsuario.html" class="links">Cadastre-se</a>
+                <a href="recuperacaoSenha.html" class="links">Esqueceu a senha?</a>
             </div>
         </section>
+        <!-- fim card de login -->
     </div>
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
