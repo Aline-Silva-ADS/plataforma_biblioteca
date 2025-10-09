@@ -138,6 +138,15 @@ body {
   text-decoration: underline;
 }
 
+.page-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+}
 
 /* ==============================
    TOPBAR (CABEÇALHO)
@@ -583,7 +592,7 @@ body {
   text-align: center;
   font-size: 1rem;
   color: #535353;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 .info-book-genres {
@@ -704,5 +713,99 @@ body {
 }
 
 /* ==============================
-   PÁGINA DE EMPRÉSTIMO DO LIVRO
+   PÁGINA DE HISTÓRICO DOS LIVROS
    ============================== */
+.content-book-history {
+  margin: 0 auto;
+  padding: 24px 16px;
+  flex: 1;
+}
+
+.books-history-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.book-history-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+  position: relative;
+  transition: .2s box-shadow;
+  min-width: 250px;
+}
+
+.book-history-card .book-title {
+  font-size: 1.08rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 2px;
+}
+
+.book-history-card .book-author {
+  font-size: 0.98rem;
+  color: #535353;
+}
+
+.book-history-card .book-date {
+  font-size: 0.98rem;
+  color: #535353;
+}
+
+.book-history-card .book-status {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.book-status--with-me {
+  background: #4285f4;
+  color: #fff;
+}
+
+.book-status--returned {
+  background: #34a853;
+  color: #fff;
+}
+
+.book-status--late {
+  background: #ea4335;
+  color: #fff;
+}
+
+.book-status--pending {
+  background: #fbbc05;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+  .content-book-history {
+    padding: 32px 24px;
+  }
+
+  .books-history-list-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 1200px) {
+
+  .books-history-list-card {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
