@@ -1,148 +1,231 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Meus Livros</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="assets/css/menu.css">
-    <link rel="stylesheet" href="assets/css/style2.css">
-    <style>
-        .historico-container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0 0 24px 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meus Livros</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root{
+      --primary:#6a00d4;
+      --bg:#f5f5f7;
+      --text:#2d2d2f;
+      --muted:#7a7a7e;
+      --white:#fff;
+      --shadow:0 2px 8px rgba(0,0,0,.08);
+      --shadow-card:0 1px 3px rgba(0,0,0,.12);
+      --radius:12px;
+    }
 
-        .historico-titulo {
-            text-align: center;
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: #23395d;
-            margin: 32px 0 8px 0;
-            letter-spacing: 0.5px;
-        }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
 
-        
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+      user-select: none;
+    }
 
-        .livro-card-historico {
-            background: #fff;
-            border: 1.5px solid #eee;
-            border-radius: 12px;
-            padding: 16px 18px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(80, 0, 255, 0.04);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+    /* Topbar */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      height:56px;
+      background:var(--primary);
+      color:var(--white);
+      display:flex;
+      align-items:center;
+      padding:0 16px;
+      box-shadow:var(--shadow);
+    }
+    .topbar .hamburger{
+      background:transparent;
+      border:0;
+      color:#fff;
+      cursor:pointer;
+      padding:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
 
-        .livro-card-historico .livro-nome {
-            font-size: 1.08rem;
-            font-weight: bold;
-            color: #222;
-            margin-bottom: 2px;
-        }
+    /* Container */
+    .container{
+      max-width:420px;
+      margin:0 auto;
+      padding:24px 16px;
+    }
 
-        .livro-card-historico .livro-autor {
-            font-size: 0.98rem;
-            color: #535353;
-        }
+    /* Title */
+    .page-title{
+      text-align:center;
+      font-size:20px;
+      font-weight:600;
+      color:var(--text);
+      margin:0 0 8px 0;
+      padding-bottom:16px;
+      border-bottom:1px solid #ddd;
+    }
 
-        .livro-card-historico .livro-data {
-            font-size: 0.98rem;
-            color: #535353;
-        }
+    /* Cards */
+    .books-list{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      margin-top:24px;
+    }
 
-        .livro-status {
-            display: inline-block;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 12px;
-            padding: 4px 16px;
-            margin-left: 8px;
-            vertical-align: middle;
-        }
+    .book-card{
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:16px 20px;
+      box-shadow:var(--shadow-card);
+      border:1px solid #e8e8e8;
+      position:relative;
+      transition:.2s box-shadow;
+    }
+    .book-card:hover{
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
 
-        .status-comigo {
-            background: #4285f4;
-            color: #fff;
-        }
+    .book-title{
+      font-size:16px;
+      font-weight:600;
+      color:var(--text);
+      margin:0 0 6px 0;
+    }
 
-        .status-entregue {
-            background: #34a853;
-            color: #fff;
-        }
+    .book-meta{
+      font-size:14px;
+      color:var(--muted);
+      margin:3px 0;
+      line-height:1.5;
+    }
 
-        .status-atraso {
-            background: #ea4335;
-            color: #fff;
-        }
+    /* Status badge */
+    .status-badge{
+      position:absolute;
+      top:16px;
+      right:20px;
+      padding:6px 14px;
+      border-radius:20px;
+      font-size:13px;
+      font-weight:600;
+      color:#fff;
+      text-transform:capitalize;
+    }
 
-        .status-pendente {
-            background: #fbbc05;
-            color: #fff;
-        }
+    .status-badge.comigo{
+      background:#2196F3;
+    }
+    .status-badge.entregue{
+      background:#4CAF50;
+    }
+    .status-badge.em-atraso{
+      background:#F44336;
+    }
+    .status-badge.pendente{
+      background:#FFC107;
+      color:#333;
+    }
 
-        @media (min-width: 600px) {
-            .historico-container {
-                max-width: 600px;
-                padding: 24px 12px;
-            }
+    /* Responsive adjustments */
+    @media (min-width: 768px){
+      .container{
+        max-width:720px;
+        padding:32px 24px;
+      }
+      .books-list{
+        display:grid;
+        grid-template-columns:repeat(2, 1fr);
+        gap:20px;
+      }
+    }
 
-            .livro-card-historico {
-                padding: 20px 28px;
-            }
-        }
-    </style>
+    @media (min-width: 1024px){
+      .container{
+        max-width:960px;
+      }
+      .books-list{
+        grid-template-columns:repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="top-bar">
-        <span class="material-symbols-outlined menu-abrir" id="btnAbrirMenu" title="Abrir menu">menu</span>
-    </div>
-    <nav class="menu-lateral" id="menuLateral">
-        <!-- Seu menu lateral aqui -->
-    </nav>
-    <main class="historico-container">
-        <div class="historico-titulo">MEUS LIVROS</div>
-        <hr class="historico-divider">
-        <div class="livro-card-historico">
-            <div class="livro-nome">Nome do Livro</div>
-            <div class="livro-autor">autor:</div>
-            <div class="livro-data">
-                Data de entrega: 00/00/0000
-                <span class="livro-status status-comigo">Comigo</span>
-            </div>
-        </div>
-        <div class="livro-card-historico">
-            <div class="livro-nome">Nome do Livro</div>
-            <div class="livro-autor">autor:</div>
-            <div class="livro-data">
-                Data de entrega: 00/00/0000
-                <span class="livro-status status-entregue">Entregue</span>
-            </div>
-        </div>
-        <div class="livro-card-historico">
-            <div class="livro-nome">Nome do Livro</div>
-            <div class="livro-autor">autor:</div>
-            <div class="livro-data">
-                Data de entrega: 00/00/0000
-                <span class="livro-status status-atraso">Em Atraso</span>
-            </div>
-        </div>
-        <div class="livro-card-historico">
-            <div class="livro-nome">Nome do Livro</div>
-            <div class="livro-autor">autor:</div>
-            <div class="livro-data">
-                Data de entrega: 00/00/0000
-                <span class="livro-status status-pendente">Pendente</span>
-            </div>
-        </div>
-    </main>
-    <script src="assets/js/script.js"></script>
-</body>
+  <header class="topbar" role="banner">
+    <button class="hamburger" aria-label="Abrir menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </header>
 
+  <main class="container">
+    <h1 class="page-title">MEUS LIVROS</h1>
+
+    <div class="books-list">
+      <!-- Card 1: Comigo -->
+      <article class="book-card">
+        <span class="status-badge comigo">Comigo</span>
+        <h2 class="book-title">Nome do Livro</h2>
+        <p class="book-meta">autor:</p>
+        <p class="book-meta">Data de entrega: 00/00/000</p>
+      </article>
+
+      <!-- Card 2: Entregue -->
+      <article class="book-card">
+        <span class="status-badge entregue">Entregue</span>
+        <h2 class="book-title">Nome do Livro</h2>
+        <p class="book-meta">autor:</p>
+        <p class="book-meta">Data de entrega: 00/00/000</p>
+      </article>
+
+      <!-- Card 3: Em Atraso -->
+      <article class="book-card">
+        <span class="status-badge em-atraso">Em Atraso</span>
+        <h2 class="book-title">Nome do Livro</h2>
+        <p class="book-meta">autor:</p>
+        <p class="book-meta">Data de entrega: 00/00/000</p>
+      </article>
+
+      <!-- Card 4: Pendente -->
+      <article class="book-card">
+        <span class="status-badge pendente">Pendente</span>
+        <h2 class="book-title">Nome do Livro</h2>
+        <p class="book-meta">autor:</p>
+        <p class="book-meta">Data de entrega: 00/00/000</p>
+      </article>
+
+      <!-- Card 5: Comigo -->
+      <article class="book-card">
+        <span class="status-badge comigo">Comigo</span>
+        <h2 class="book-title">Nome do Livro</h2>
+        <p class="book-meta">autor:</p>
+        <p class="book-meta">Data de entrega: 00/00/000</p>
+      </article>
+
+      <!-- Card 6: Entregue -->
+      <article class="book-card">
+        <span class="status-badge entregue">Entregue</span>
+        <h2 class="book-title">Nome do Livro</h2>
+        <p class="book-meta">autor:</p>
+        <p class="book-meta">Data de entrega: 00/00/000</p>
+      </article>
+    </div>
+  </main>
+
+  <script>
+    // Drawer mobile (se integrar com menu lateral)
+    const btn = document.querySelector('.hamburger');
+    btn.addEventListener('click', () => {
+      // Aqui você pode integrar com o menu lateral do index.html
+      alert('Abrir menu lateral');
+    });
+  </script>
+</body>
 </html>
