@@ -268,6 +268,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  font-size: 0.875rem;
 }
 
 .submenu a {
