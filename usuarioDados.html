@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Dados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7b1fa2;
+            --light-purple: #9c27b0;
+            --text-dark: #333;
+            --text-label: #666;
+            --border-color: #7b1fa2;
+            --white: #ffffff;
+            --background: #fafafa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary-purple);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+
+        .menu-btn:hover {
+            opacity: 0.8;
+        }
+
+        .menu-btn:active {
+            opacity: 0.6;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1rem;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
+
+        /* Form */
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.875rem;
+            color: var(--text-label);
+            font-weight: 400;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: all 0.2s;
+            background-color: var(--white);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--light-purple);
+            box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #bdbdbd;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-purple);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+            text-transform: capitalize;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--light-purple);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(123, 31, 162, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 1.5rem 1rem;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .form-title {
+                font-size: 1.125rem;
+            }
+
+            .form-input {
+                padding: 0.75rem 0.875rem;
+                font-size: 0.9375rem;
+            }
+
+            .submit-btn {
+                padding: 0.875rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .main-content {
+                padding: 3rem 2rem;
+                align-items: center;
+            }
+
+            .form-container {
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus visible for keyboard navigation */
+        .menu-btn:focus-visible,
+        .form-input:focus-visible,
+        .submit-btn:focus-visible {
+            outline: 2px solid var(--primary-purple);
+            outline-offset: 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="header">
+        <button class="menu-btn" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <div class="form-container">
+            <h1 class="form-title">MEUS DADOS</h1>
+
+            <form class="form" id="meusdados-form">
+                <div class="form-group">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" id="senha" name="senha" class="form-input" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmar-senha" class="form-label">Digite Novamente a senha</label>
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" class="form-input" placeholder=""
+                        required>
+                </div>
+
+                <button type="submit" class="submit-btn">Salvar</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

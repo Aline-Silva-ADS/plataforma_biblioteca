@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Biblioteca</title>
+     <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="assets/css/menu.css">
+</head>
+
+<body>
+    <header class="topbar" role="banner">
+        <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="brand">
+            <span>Biblioteca</span>
+        </div>
+        <div class="action" role="button" tabindex="0">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </div>
+    </header>
+
+    <div class="layout">
+        <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
+            <div class="nav-group">
+                <a class="nav-item active" href="#home">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Home</span>
+                </a>
+            </div>
+
+            <div class="nav-group">
+
+                <details class="accordion" id="books-acc">
+                    <summary aria-controls="submenu-books" aria-expanded="false">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <span>Livros </span>
+                        <span class="material-symbols-outlined" id="icon-align-right"> keyboard_arrow_down</span>
+                    </summary>
+                    <div id="submenu-books" class="submenu" role="region" aria-label="Submenu Livros">
+                        <a href="#cadastrar">Cadastrar</a>
+                        <a href="#emprestar">Emprestar livros</a>
+                        <a href="#retirada">Retirada / Devolução de livros</a>
+                        <a href="#historico">Histórico</a>
+                        <a href="#listar">Listar todos</a>
+                    </div>
+                </details>
+            </div>
+
+            <div class="nav-group">
+                <a class="nav-item" href="#usuarios">
+                    <span class="material-symbols-outlined">group</span>
+                    <span>Verificar usuários</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="backdrop" id="backdrop"></div>
+
+
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Busque o livro por título ou autor">
+                <button class="search-btn" aria-label="Buscar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-indicator purple"></div>
+                    <div class="stat-content">
+                        <div class="stat-label">Alunos</div>
+                        <div class="stat-value">218</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-indicator blue"></div>
+                    <div class="stat-content">
+                        <div class="stat-label">Livros</div>
+                        <div class="stat-value">346</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-indicator green"></div>
+                    <div class="stat-content">
+                        <div class="stat-label">Livros emprestados</div>
+                        <div class="stat-value">98</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-indicator yellow"></div>
+                    <div class="stat-content">
+                        <div class="stat-label">Atrasados</div>
+                        <div class="stat-value">4</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shortcuts Section -->
+            <section class="shortcuts-section">
+                <h2 class="section-title">Atalhos</h2>
+                <div class="shortcuts-grid">
+                    <button class="shortcut-btn">Emprestar livros</button>
+                    <button class="shortcut-btn">Retirada de livros</button>
+                    <button class="shortcut-btn">Confirmar devolução</button>
+                    <button class="shortcut-btn">Verificar usuários</button>
+                    <button class="shortcut-btn full-width">Todos os livros</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
