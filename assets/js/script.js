@@ -52,3 +52,5 @@ const grid = document.querySelector('.livros-grid');
 
 next.addEventListener('click', () => grid.scrollBy({ left: 150, behavior: 'smooth' }));
 prev.addEventListener('click', () => grid.scrollBy({ left: -150, behavior: 'smooth' }));
+
+

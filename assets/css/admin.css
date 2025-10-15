@@ -24,6 +24,56 @@
     --font-size-titulo-mobile: 1.2rem;
 }
 
+/* menu lateral */
+.topbar .action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 980px) {
+    .topbar .hamburger {
+        display: inline-flex
+    }
+
+    .layout {
+        position: relative
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        height: calc(100vh - 56px);
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: var(--shadow);
+        z-index: 60;
+    }
+
+    .sidebar.open {
+        transform: translateX(0)
+    }
+
+    .backdrop {
+        position: fixed;
+        inset: 56px 0 0 0;
+        background: rgba(0, 0, 0, .28);
+        opacity: 0;
+        pointer-events: none;
+        transition: .2s;
+        z-index: 55;
+    }
+
+    .backdrop.show {
+        opacity: 1;
+        pointer-events: auto
+    }
+}
+
 /* Search Bar */
 .search-container {
     max-width: 600px;
@@ -92,7 +142,7 @@
 
 .stat-indicator {
     width: 8px;
-    border-radius: 3px;
+    border-radius: 12px;
     flex-shrink: 0;
 }
 
@@ -298,4 +348,316 @@
 
 .sidebar::-webkit-scrollbar-thumb:hover {
     background: #999;
+}
+
+/* cadastro de livros */
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.form-title {
+    text-align: center;
+    color: var(--color-gray-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.form-group.flex-grow {
+    flex: 1;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-dark);
+}
+
+.required {
+    color: var(--color-danger);
+}
+
+.optional {
+    color: var(--color-gray-dark);
+    font-weight: 400;
+}
+
+.hint {
+    color: var(--color-gray-dark);
+    font-weight: 400;
+    font-size: 0.813rem;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select[multiple] {
+    min-height: 120px;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-gray-light);
+    font-size: 0.75rem;
+}
+
+.help-text {
+    font-size: 0.75rem;
+    color: var(--color-gray-dark);
+    margin-top: -0.25rem;
+}
+
+
+/* Cover Upload */
+.cover-upload {
+    flex: 0 0 auto;
+}
+
+.upload-area {
+    width: 140px;
+    height: 200px;
+    border: 2px dashed var(--color-primary-dark);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--color-background);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area:hover {
+    background-color: rgba(124, 58, 237, 0.05);
+    border-color: var(--color-primary-dark);
+}
+
+.upload-label {
+    text-align: center;
+    color: var(--color-primary-dark);
+    font-size: 0.813rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.cover-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.btn-submit {
+    background-color: var(--color-success);
+    color: var(--color-white);
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 6px;
+    font-size: 0.938rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.btn-submit:hover {
+    background-color: var(--color-success-dark);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+   
+
+    .form-container {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .cover-upload {
+        align-self: center;
+    }
+
+    .form-title {
+        font-size: 1.25rem;
+    }
+
+    .exit-btn span {
+        display: none;
+    }
+
+    .exit-btn {
+        padding: 0.5rem;
+        min-width: 40px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0 1rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .form-container {
+        padding: 1.25rem;
+        border-radius: 8px;
+    }
+
+    .form-title {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .book-form {
+        gap: 1.25rem;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 0.875rem;
+    }
+
+    .nav-item,
+    .submenu-item {
+        font-size: 0.813rem;
+    }
+}
+
+/* Sidebar Overlay for Mobile */
+@media (max-width: 768px) {
+    .sidebar-overlay {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        display: none;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .sidebar,
+    .form-actions {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .form-container {
+        box-shadow: none;
+    }
 }
