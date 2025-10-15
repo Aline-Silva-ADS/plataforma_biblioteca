@@ -311,14 +311,7 @@
     display: block;
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
+
 
 /* Focus visible for keyboard navigation */
 .nav-item:focus-visible,
@@ -332,27 +325,10 @@
     outline-offset: 2px;
 }
 
-/* Scrollbar styling */
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 3px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: #999;
-}
 
 /* cadastro de livros */
 .form-container {
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
     border-radius: 12px;
     padding: 2rem;
@@ -508,7 +484,6 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
    
-
     .form-container {
         padding: 2rem;
     }
@@ -610,23 +585,7 @@
     }
 }
 
-/* Scrollbar Styling */
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
 
-.sidebar::-webkit-scrollbar-track {
-    background: var(--gray-100);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: var(--gray-300);
-    border-radius: 3px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: var(--gray-400);
-}
 
 /* Animations */
 @keyframes fadeIn {
