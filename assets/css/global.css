@@ -5,8 +5,9 @@
   --color-primary: #8000ff;
   --color-primary-dark: #4b00b5;
   --color-background: #fafafa;
-  --color-border: #eee;
+  --color-border: #e5e7eb;
   --color-text: #333;
+  --color-title: #111827;
   --color-white: #fff;
   --color-info: #2196f3;
   --color-success: #34a853;
@@ -54,7 +55,6 @@ body {
   font-size: 20px;
   user-select: none;
 }
-
 
 /* ==============================
    LAYOUT PRINCIPAL
@@ -149,6 +149,24 @@ body {
   box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
 }
 
+.btn-submit {
+  background-color: var(--color-success);
+  color: var(--color-white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.btn-submit:hover {
+  background-color: var(--color-success-dark);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
 .links {
   color: var(--color-primary);
   text-decoration: none;
@@ -168,6 +186,24 @@ body {
   margin: 0 0 8px 0;
   padding-bottom: 16px;
   border-bottom: 1px solid #ddd;
+}
+
+.help-text {
+    font-size: 0.75rem;
+    color: var(--color-gray-dark);
+    margin-top: -0.25rem;
+}
+
+label{
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: var(--color-text);
+}
+input::placeholder{
+  color: var(--color-gray-light);
+  font-size: 0.875rem;
 }
 
 /* ==============================
@@ -309,7 +345,7 @@ body {
 .card-login {
   max-width: 90vw;
   width: 350px;
-  padding: 10px 24px 10px 24px;
+  padding: 24px;
 }
 
 .title-login {
