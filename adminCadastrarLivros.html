@@ -14,132 +14,139 @@
 
 <body>
 
-        <header class="topbar" role="banner">
-            <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            <div class="brand">
-                <span>Biblioteca</span>
+    <header class="topbar" role="banner">
+        <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="brand">
+            <span>Biblioteca</span>
+        </div>
+        <div class="action" role="button" tabindex="0">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </div>
+    </header>
+
+    <div class="layout">
+        <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
+            <div class="nav-group">
+                <a class="nav-item active" href="#home">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Home</span>
+                </a>
             </div>
-            <div class="action" role="button" tabindex="0">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
+
+            <div class="nav-group">
+
+                <details class="accordion" id="books-acc">
+                    <summary aria-controls="submenu-books" aria-expanded="false">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <span>Livros </span>
+                        <span class="material-symbols-outlined" id="icon-align-right"> keyboard_arrow_down</span>
+                    </summary>
+                    <div id="submenu-books" class="submenu" role="region" aria-label="Submenu Livros">
+                        <a href="#cadastrar">Cadastrar</a>
+                        <a href="#emprestar">Emprestar livros</a>
+                        <a href="#retirada">Retirada / Devolução de livros</a>
+                        <a href="#historico">Histórico</a>
+                        <a href="#listar">Listar todos</a>
+                    </div>
+                </details>
             </div>
-        </header>
 
-        <div class="layout">
-            <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
-                <div class="nav-group">
-                    <a class="nav-item active" href="#home">
-                        <span class="material-symbols-outlined">home</span>
-                        <span>Home</span>
-                    </a>
-                </div>
+            <div class="nav-group">
+                <a class="nav-item" href="#usuarios">
+                    <span class="material-symbols-outlined">group</span>
+                    <span>Verificar usuários</span>
+                </a>
+            </div>
+        </nav>
 
-                <div class="nav-group">
+        <div class="backdrop" id="backdrop"></div>
 
-                    <details class="accordion" id="books-acc">
-                        <summary aria-controls="submenu-books" aria-expanded="false">
-                            <span class="material-symbols-outlined">auto_stories</span>
-                            <span>Livros </span>
-                            <span class="material-symbols-outlined" id="icon-align-right"> keyboard_arrow_down</span>
-                        </summary>
-                        <div id="submenu-books" class="submenu" role="region" aria-label="Submenu Livros">
-                            <a href="#cadastrar">Cadastrar</a>
-                            <a href="#emprestar">Emprestar livros</a>
-                            <a href="#retirada">Retirada / Devolução de livros</a>
-                            <a href="#historico">Histórico</a>
-                            <a href="#listar">Listar todos</a>
-                        </div>
-                    </details>
-                </div>
+        <!-- Main Content -->
+        <main class="content">
+            <div class="card form-container">
+                <h1 class="form-title">Cadastrar Livros</h1>
 
-                <div class="nav-group">
-                    <a class="nav-item" href="#usuarios">
-                        <span class="material-symbols-outlined">group</span>
-                        <span>Verificar usuários</span>
-                    </a>
-                </div>
-            </nav>
-
-            <div class="backdrop" id="backdrop"></div>
-
-            <!-- Main Content -->
-            <main class="content">
-                <div class="card form-container">
-                    <h1 class="form-title">Cadastrar Livros</h1>
-
-                    <form class="book-form" id="bookForm">
-                        <div class="form-row">
-                            <div class="form-group cover-upload">
-                                <div class="upload-area" id="uploadArea">
-                                    <input type="file" id="coverInput" accept="image/*" hidden>
-                                    <label for="coverInput" class="upload-label">
-                                        Clique para selecionar a capa
-                                    </label>
-                                    <img id="coverPreview" class="cover-preview" style="display: none;">
-                                </div>
+                <form class="book-form" id="bookForm">
+                    <div class="form-row">
+                        <div class="form-group cover-upload">
+                            <div class="upload-area" id="uploadArea">
+                                <input type="file" id="coverInput" accept="image/*" hidden>
+                                <label for="coverInput" class="upload-label">
+                                    Clique para selecionar a capa
+                                </label>
+                                <img id="coverPreview" class="cover-preview" style="display: none;">
                             </div>
-                           
-                            <div class="form-group flex-grow">
-                                <div class="form-group ">
-                                    <label for="title">Título <span class="required">*</span></label>
-                                    <input type="text" id="title" name="title" class="input" required>
+                        </div>
+
+                        <div class="form-group flex-grow">
+                            <div class="form-group ">
+                                <label for="title">Título <span class="required">*</span></label>
+                                <input type="text" id="title" name="title" class="input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="authors">Autor(es) <span class="required">*</span> <span
+                                        class="hint">(separe
+                                        por vírgula)</span></label>
+                                <input type="text" id="authors" name="authors" class="input"
+                                    placeholder="Ex: Anna Santos, João Carvalho" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="genres">Gênero(s) <span class="required">*</span></label>
+                            <select id="genres" name="genres" class="input" multiple required>
+                                <option value="">Gênero1</option>
+                                <option value="genero1">Gênero1</option>
+                                <option value="genero2">Gênero1</option>
+                                <option value="genero3">Gênero1</option>
+                                <option value="genero4">Gênero1</option>
+                            </select>
+                            <small class="help-text">Use ctrl para selecionar mais de um</small>
+                        </div>
+                        <div class="form-column">
+                            <div class="form-row">
+                                <div class="form-group " >
+                                    <label for="year">Ano de Lançamento</label>
+                                    <input type="number" id="year" name="year" min="1000" max="2100" class="input">
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="authors">Autor(es) <span class="required">*</span> <span
-                                            class="hint">(separe
-                                            por vírgula)</span></label>
-                                    <input type="text" id="authors" name="authors" class="input"
-                                        placeholder="Ex: Anna Santos, João Carvalho" required>
+                                    <label for="quantity">Quantidade total<span class="required">*</span></label>
+                                    <input type="number" id="quantity" name="quantity" min="1" class="input" required>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-row">
+                            <div class="form-row">
                             <div class="form-group">
-                                <label for="genres">Gênero(s) <span class="required">*</span></label>
-                                <select id="genres" name="genres" class="input" multiple required>
-                                    <option value="">Gênero1</option>
-                                    <option value="genero1">Gênero1</option>
-                                    <option value="genero2">Gênero1</option>
-                                    <option value="genero3">Gênero1</option>
-                                    <option value="genero4">Gênero1</option>
-                                </select>
-                                <small class="help-text">Use ctrl para selecionar mais de um</small>
+                                <label for="location">Localização</label>
+                                <input type="text" id="location" name="location" class="input"
+                                    placeholder="EX: A, prateleira 5">
                             </div>
-
-                            <div class="form-group">
-                                <label for="year">Ano de Lançamento</label>
-                                <input type="number" id="year" name="year" min="1000" max="2100" class="input">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="quantity">Quantidade total<span class="required">*</span></label>
-                                <input type="number" id="quantity" name="quantity" min="1" class="input" required>
-                            </div>
-
                         </div>
-
-                        <div class="form-group">
-                            <label for="location">Localização</label>
-                            <input type="text" id="location" name="location" class="input"
-                                placeholder="EX: A, prateleira 5">
                         </div>
+                        
 
-                        <div class="form-group">
-                            <label for="synopsis">Sinopse <span class="optional">(opcional)</span></label>
-                            <textarea id="synopsis" name="synopsis" rows="4" class="input"></textarea>
-                        </div>
+                    </div>
 
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-submit">Salvar</button>
-                        </div>
-                    </form>
-                </div>
-            </main>
 
-            <script src="assets/js/script.js"></script>
-    </body>
+
+                    <div class="form-group">
+                        <label for="synopsis">Sinopse <span class="optional">(opcional)</span></label>
+                        <textarea id="synopsis" name="synopsis" rows="4" class="input"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <script src="assets/js/script.js"></script>
+</body>
 
 </html>
