@@ -279,10 +279,6 @@
   text-transform: justify;
 }
 
-.empty-space {
-  flex: 1;
-}
-
 .btn-container {
   display: flex;
   justify-content: center;

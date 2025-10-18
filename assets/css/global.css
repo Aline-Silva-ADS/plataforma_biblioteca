@@ -206,6 +206,18 @@ input::placeholder{
   font-size: 0.875rem;
 }
 
+.empty-space {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .card-mobile-none {
+    background-color: var(--color-white);
+    border: none;
+    box-shadow: none;
+  }
+}
+
 /* ==============================
    TOPBAR (CABEÇALHO)
    ============================== */

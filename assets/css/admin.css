@@ -501,13 +501,8 @@
 
 @media (max-width: 480px) {
 
-    body{
+    body {
         background-color: white;
-    }
-
-    .form-container {
-       box-shadow: none;
-       border: none;
     }
 
     .form-title {
@@ -535,11 +530,17 @@
 #card-book-loan {
     max-width: 600px;
     margin: 0 auto;
-    border-radius: 12px;
     padding: 2.5rem;
 }
+
 .search-section {
     margin-bottom: 2rem;
+    width: 100%;
+}
+
+.action-section {
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
 }
 
@@ -575,136 +576,40 @@
     width: 100%;
 }
 
-.date-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.1);
-}
-
 /* Action Section */
 .action-section {
     display: flex;
     justify-content: flex-end;
 }
 
-.btn-concluir:hover {
-    background: var(--success-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
-}
-
-.btn-concluir:active {
-    transform: translateY(0);
-}
-
-/* Responsive Design */
-@media (max-width: 968px) {
-    .header-content h1 {
-        font-size: 1.25rem;
-    }
-
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        margin-top: 3rem;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .main-content {
-        padding: 1.5rem 1rem;
-    }
-
-    .card {
-        padding: 1.5rem;
-    }
-}
-
 @media (max-width: 640px) {
-    .header {
-        padding: 1rem;
-    }
-
-    .header-content {
-        flex-direction: row;
-        gap: 1rem;
-    }
-
-    .header h1 {
-        font-size: 1.1rem;
-    }
-
-    .btn-sair {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.875rem;
-    }
-
-    .btn-sair span {
-        display: none;
-    }
-
-    .card {
-        padding: 1.25rem;
-    }
-
-    .search-section h2,
-    .date-section h2 {
-        font-size: 1rem;
-    }
 
     .search-box {
         flex-direction: column;
-    }
-
-    .search-btn {
-        width: 100%;
     }
 
     .info-row {
         flex-direction: column;
         gap: 0.25rem;
     }
-
-    .btn-concluir {
-        width: 100%;
-        padding: 0.875rem 1.5rem;
-    }
-
-    .nav-item {
-        padding: 0.75rem 1rem;
-    }
-
-    .submenu-item {
-        padding: 0.625rem 1rem 0.625rem 2.5rem;
-    }
 }
 
 @media (max-width: 480px) {
-    .main-content {
-        padding: 1rem 0.5rem;
+    #card-book-loan {
+        padding: 1.5rem;
+        height: 100%;
     }
 
-    .card {
-        padding: 1rem;
-        border-radius: 8px;
+    .search-section {
+        padding: 0;
+    }
+    .btn-submit {
+        width: 100%;
     }
 
     .search-input,
     .date-input {
-        font-size: 16px; /* Prevents zoom on iOS */
+        font-size: 16px;
+        /* Prevents zoom on iOS */
     }
 }
