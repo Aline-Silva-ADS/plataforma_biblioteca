@@ -332,14 +332,6 @@
     padding: 2.5rem;
 }
 
-.form-title {
-    text-align: center;
-    color: var(--color-gray-dark);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-}
-
 /* Form Styles */
 .book-form {
     width: 100%;
@@ -492,22 +484,12 @@
         align-self: center;
     }
 
-    .form-title {
-        font-size: 1.25rem;
-    }
-
-
 }
 
 @media (max-width: 480px) {
 
     body {
         background-color: white;
-    }
-
-    .form-title {
-        font-size: 1.125rem;
-        margin-bottom: 1.5rem;
     }
 
     .book-form {
