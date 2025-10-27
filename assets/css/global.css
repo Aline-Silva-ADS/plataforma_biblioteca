@@ -130,7 +130,7 @@ body {
   border-color: var(--color-primary-dark);
 }
 
-.badge{
+.badge {
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
@@ -227,7 +227,8 @@ body {
   margin-top: -0.25rem;
 }
 
-label , .label {
+label,
+.label {
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 6px;
@@ -487,4 +488,170 @@ input::placeholder {
   justify-content: space-between;
   margin-top: 20px;
   font-size: var(--font-size-base);
+}
+
+/* ==============================
+   TABELAS RESPONSIVAS
+   ============================== */
+.card-table {
+  padding: 24px;
+}
+
+.card-table-header {
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 2%;
+}
+
+div.table-text {
+  flex: 1;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.card p span {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.search-box {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f8f8f8;
+  color: #555;
+}
+
+/* Linhas alternadas da tabela */
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-striped tbody tr:hover {
+  background-color: #f3e8ff;
+  transition: background 0.2s;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #facc15;
+}
+
+.btn-ativar {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-ativar:hover {
+  background: #15803d;
+}
+
+/* Contêiner da tabela */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ====== responsividade card e tabela ====== */
+@media (max-width: 768px) {
+  .card-table-header {
+    flex-direction: column;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table,
+  .responsive-table tbody,
+  .responsive-table tr,
+  .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .responsive-table tr {
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .responsive-table td {
+    text-align: right;
+    padding: 10px 8px;
+    border: none;
+    position: relative;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 50%;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .responsive-table .status {
+    justify-content: flex-end;
+    padding: 10px 8px;
+    border: none;
+  }
+
+  .responsive-table td:last-child {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
 }
