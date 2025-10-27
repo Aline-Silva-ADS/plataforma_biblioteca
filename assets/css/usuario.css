@@ -413,32 +413,6 @@
   position: absolute;
   top: 16px;
   right: 20px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-white);
-  text-transform: capitalize;
-}
-
-.book-status--with-me {
-  background: var(--color-info);
-  color: var(--color-white);
-}
-
-.book-status--returned {
-  background: var(--color-success);
-  color: var(--color-white);
-}
-
-.book-status--late {
-  background: var(--color-danger);
-  color: var(--color-white);
-}
-
-.book-status--pending {
-  background: var(--color-warning);
-  color: var(--color-white);
 }
 
 /* Responsive adjustments */

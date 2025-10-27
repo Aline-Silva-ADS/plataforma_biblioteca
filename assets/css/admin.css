@@ -595,3 +595,23 @@
         /* Prevents zoom on iOS */
     }
 }
+
+/* pagina de informacoes do livro */
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+
+

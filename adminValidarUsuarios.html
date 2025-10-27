@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validar Usuários</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <style>
+    .card {
+      padding: 24px;
+    }
+
+    .card-table-header {
+      margin-bottom: 8px;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      gap: 2%;
+    }
+
+    div.table-text {
+      flex: 1;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    .card p span {
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .search-box {
+      width: 30%;
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9em;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f8f8f8;
+      color: #555;
+    }
+
+    /* Linhas alternadas da tabela */
+    .table-striped tbody tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    .table-striped tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .table-striped tbody tr:hover {
+      background-color: #f3e8ff;
+      transition: background 0.2s;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #facc15;
+    }
+
+    .btn-ativar {
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-ativar:hover {
+      background: #15803d;
+    }
+
+    /* Contêiner da tabela */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    /* ====== TABELA RESPONSIVA ====== */
+    @media (max-width: 768px) {
+      .responsive-table thead {
+        display: none;
+      }
+
+      .responsive-table,
+      .responsive-table tbody,
+      .responsive-table tr,
+      .responsive-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .responsive-table tr {
+        margin-bottom: 15px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+      }
+
+      .responsive-table td {
+        text-align: right;
+        padding: 10px 8px;
+        border: none;
+        position: relative;
+      }
+
+      .responsive-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 50%;
+        text-align: left;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .responsive-table td:last-child {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    <div class="brand">
+      <span>Biblioteca</span>
+    </div>
+    <div class="action" role="button" tabindex="0">
+      <span class="material-symbols-outlined">logout</span>
+      <span>Sair</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
+      <div class="nav-group">
+        <a class="nav-item" href="adminHome.html">
+          <span class="material-symbols-outlined">home</span>
+          <span>Home</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <details class="accordion" id="books-acc">
+          <summary aria-controls="submenu-books" class="active" aria-expanded="false">
+            <span class="material-symbols-outlined">auto_stories</span>
+            <span>Livros </span>
+            <span class="material-symbols-outlined" id="icon-align-right"> keyboard_arrow_down</span>
+          </summary>
+          <div id="submenu-books" class="submenu" role="region" aria-label="Submenu Livros">
+            <a href="adminCadastrarLivros.html">Cadastrar</a>
+            <a href="adminEmprestarLivros.html">Emprestar livros</a>
+            <a href="#retirada">Retirada / Devolução de livros</a>
+            <a href="#historico">Histórico</a>
+            <a href="#listar">Listar todos</a>
+          </div>
+        </details>
+      </div>
+      <div class="nav-group">
+        <a class="nav-item" href="#usuarios">
+          <span class="material-symbols-outlined">group</span>
+          <span>Verificar usuários</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="backdrop" id="backdrop"></div>
+
+    <!-- Main Content -->
+    <main class="content">
+      <div class="card card-mobile-none">
+        <div class="card-table-header">
+          <div class="table-text">
+            <h2>Validar Usuários</h2>
+            <p>Clique em <span>ativar</span> para validar os usuários cadastrados</p>
+          </div>
+          <div class="search-box">
+            <input type="text" id="searchInput" class="input" placeholder="Buscar pelo RA">
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="userTable" class="table-striped responsive-table">
+            <thead>
+              <tr>
+                <th>RA</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Data de cadastro</th>
+                <th>Status do cadastro</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="RA"><strong>2023101</strong></td>
+                <td data-label="Nome">Maria Silva</td>
+                <td data-label="E-mail">maria@email.com</td>
+                <td data-label="Data de cadastro">12/04/2024</td>
+                <td data-label="Status do cadastro">
+                  <div class="status">
+                    <div class="dot"></div>
+                    <span>Pendente</span>
+                  </div>
+                </td>
+                <td data-label="Ações"><button class="btn-ativar">Ativar</button></td>
+              </tr>
+              <tr>
+                <td data-label="RA"><strong>2023102</strong></td>
+                <td data-label="Nome">João Pereira</td>
+                <td data-label="E-mail">joao@email.com</td>
+                <td data-label="Data de cadastro">15/04/2024</td>
+                <td data-label="Status do cadastro">
+                  <div class="status">
+                    <div class="dot"></div>
+                    <span>Pendente</span>
+                  </div>
+                </td>
+                <td data-label="Ações"><button class="btn-ativar">Ativar</button></td>
+              </tr>
+              <tr>
+                <td data-label="RA"><strong>2023103</strong></td>
+                <td data-label="Nome">Ana Costa</td>
+                <td data-label="E-mail">ana@email.com</td>
+                <td data-label="Data de cadastro">18/04/2024</td>
+                <td data-label="Status do cadastro">
+                  <div class="status">
+                    <div class="dot"></div>
+                    <span>Pendente</span>
+                  </div>
+                </td>
+                <td data-label="Ações"><button class="btn-ativar">Ativar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const searchInput = document.getElementById('searchInput');
+      const rows = document.querySelectorAll('#userTable tbody tr');
+
+      searchInput.addEventListener('input', function () {
+        const value = this.value.toLowerCase();
+        rows.forEach(row => {
+          const ra = row.cells[0].textContent.toLowerCase();
+          row.style.display = ra.includes(value) ? '' : 'none';
+        });
+      });
+
+      const buttons = document.querySelectorAll('.btn-ativar');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const statusCell = btn.closest('tr').querySelector('.status span');
+          const dot = btn.closest('tr').querySelector('.dot');
+          statusCell.textContent = 'Ativo';
+          dot.style.background = '#22c55e';
+          btn.disabled = true;
+          btn.style.background = '#ccc';
+          btn.textContent = 'Ativado';
+        });
+      });
+    </script>
+</body>
+
+</html>
