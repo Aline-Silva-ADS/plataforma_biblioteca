@@ -7,7 +7,7 @@
   --color-background: #fafafa;
   --color-border: #e5e7eb;
   --color-text: #333;
-  --color-title: #111827;
+  --color-title: #1a243a;
   --color-white: #fff;
   --color-info: #2196f3;
   --color-success: #34a853;
@@ -165,7 +165,11 @@ body {
   font-weight: 600;
   align-self: flex-start;
 }
-
+.text-info {
+  color: var(--color-info);
+  font-weight: 600;
+  align-self: flex-start;
+}
 .btn {
   padding: 12px 0;
   background: var(--color-primary);
@@ -209,9 +213,11 @@ body {
 .btn-success:hover {
   background: var(--color-success-dark);
 }
+
 .btn-info {
   background: var(--color-info);
 }
+
 .btn-info:hover {
   background: var(--color-info-dark);
 }
@@ -228,7 +234,7 @@ body {
 
 .title {
   text-align: center;
-  color: var(--color-gray-dark);
+  color: var(--color-title);
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -587,9 +593,9 @@ th {
 }
 
 .btn-table{
-  background: var(--color-success);
   border-radius: 5px;
   padding: 6px 14px;
+  font-size: 14px;
 }
 
 /* Contêiner da tabela */

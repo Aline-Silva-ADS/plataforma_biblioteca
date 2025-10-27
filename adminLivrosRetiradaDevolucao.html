@@ -66,7 +66,7 @@
             <div class="card card-table card-mobile-none">
                 <div class="card-table-header">
                     <div class="table-text">
-                        <h2>Retirada e devolução de livros</h2>
+                        <h2 class="title">Retirada e devolução de livros</h2>
                     </div>
                     <div class="search-box">
                         <input type="text" class="input" placeholder="Buscar pelo RA">
@@ -88,29 +88,29 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>2023101</strong></td>
-                                <td>nome do aluno</td>
-                                <td>nome do livro</td>
-                                <td>12/07/2025</td>
-                                <td>Retirada</td>
-                                <td>
-                                    <div class="status">
-                                        <div class="dot"></div>
-                                        <span>Pendente</span>
-                                    </div>
-                                </td>
-                                <td data-label="Ações"><button class="btn btn-ativar btn-success">Confirmar retirada</button></td>
+                                <td data-label="RA"><strong>2023101</strong></td>
+                                <td data-label="Aluno">nome do aluno</td>
+                                <td data-label="Título do livro">nome do livro</td>
+                                <td data-label="Data de solicitação">12/07/2025</td>
+                                <td data-label="Localização">Seção 5</td>
+                                <td data-label="Tipo de ação"><span class="text-success">Retirada</span></td>
+                                <td data-label="Ações"><button class="btn btn-table btn-success">Confirmar retirada</button></td>
                             </tr>
-                            
-                            
+                              <tr>
+                                <td data-label="RA"><strong>2023101</strong></td>
+                                <td data-label="Aluno">nome do aluno</td>
+                                <td data-label="Título do livro">nome do livro</td>
+                                <td data-label="Data de solicitação">12/07/2025</td>
+                                <td data-label="Localização">Seção 5</td>
+                                <td data-label="Tipo de ação"><span class="text-info">Devolução</span></td>
+                                <td data-label="Ações"><button class="btn btn-table btn-info">Confirmar devolução</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </main>
     </div>
-
-
 </body>
 
 </html>
