@@ -16,6 +16,7 @@
   --color-gray-light: #9ca3af;
   --color-gray-dark: #535353;
   --color-success-dark: #2c7a4f;
+  --color-info-dark: #1976d2;
   --shadow-card: 0 2px 8px rgba(80, 0, 255, 0.08);
   --radius-card: 12px;
   --radius-input: 8px;
@@ -202,6 +203,18 @@ body {
   transform: translateY(0);
 }
 
+.btn-success {
+  background: var(--color-success);
+}
+.btn-success:hover {
+  background: var(--color-success-dark);
+}
+.btn-info {
+  background: var(--color-info);
+}
+.btn-info:hover {
+  background: var(--color-info-dark);
+}
 .links {
   color: var(--color-primary);
   text-decoration: none;
@@ -548,7 +561,7 @@ th {
 
 /* Linhas alternadas da tabela */
 .table-striped tbody tr:nth-child(odd) {
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .table-striped tbody tr:nth-child(even) {
@@ -556,7 +569,7 @@ th {
 }
 
 .table-striped tbody tr:hover {
-  background-color: #f3e8ff;
+  background-color: #f1e8fa;
   transition: background 0.2s;
 }
 
@@ -570,21 +583,13 @@ th {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #facc15;
+  background: var(--color-warning);
 }
 
-.btn-ativar {
-  background: #16a34a;
-  color: #fff;
-  border: none;
+.btn-table{
+  background: var(--color-success);
   border-radius: 5px;
   padding: 6px 14px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-ativar:hover {
-  background: #15803d;
 }
 
 /* Contêiner da tabela */
@@ -617,7 +622,7 @@ th {
 
   .responsive-table tr {
     margin-bottom: 15px;
-    background: #fff;
+    background: var(--color-white);
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
