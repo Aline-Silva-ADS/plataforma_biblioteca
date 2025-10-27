@@ -7,7 +7,7 @@
   --color-background: #fafafa;
   --color-border: #e5e7eb;
   --color-text: #333;
-  --color-title: #1a243a;
+  --color-title: #303030;
   --color-white: #fff;
   --color-info: #2196f3;
   --color-success: #34a853;
@@ -236,8 +236,11 @@ body {
   text-align: center;
   color: var(--color-title);
   font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.text-start {
+  text-align: left;
 }
 
 .help-text {
