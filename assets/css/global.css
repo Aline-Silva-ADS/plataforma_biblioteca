@@ -222,6 +222,11 @@ body {
 .btn-info:hover {
   background: var(--color-info-dark);
 }
+
+.btn-full {
+  width: 100%;
+}
+
 .links {
   color: var(--color-primary);
   text-decoration: none;
@@ -497,14 +502,8 @@ input::placeholder {
   justify-content: center;
 }
 
-.btn-login {
-  width: 100%;
-}
-
 .links-login {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   margin-top: 20px;
   font-size: var(--font-size-base);
 }

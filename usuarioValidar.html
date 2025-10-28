@@ -12,19 +12,19 @@
     <div class="content-full flex">
         <!-- Card de Recuperação -->
         <section class="card card-login">
-            <h1 class="title-login">Recuperação de Senha</h1>
+            <h1 class="title-login">Validação de Código</h1>
             <p class="text-instruction">
-                Informe seu e-mail para receber o link de recuperação de senha.
+                Digite o código de validação enviado para seu celular.
             </p>
             <!-- formulario -->
             <form class="form-login">
-                <label for="email" class="label-login">E-mail</label>
-                <input type="email" id="email" name="email" class="input-primary input-login" required
-                    autocomplete="username">
-                <button type="submit" class="btn btn-login">Enviar link</button>
+                <label for="codigo" class="label-login">Código de Validação</label>
+                <input type="text" id="codigo" name="codigo" class="input input-primary" required
+                    autocomplete="off">
+                <button type="submit" class="btn btn-login">Validar</button>
             </form>
             <!-- fim do formulario -->
-            <div class="links-login" style="justify-content: flex-start;">
+            <div class="links-login" >
                 <a href="index.html" class="links">Voltar ao login</a>
             </div>
         </section>
