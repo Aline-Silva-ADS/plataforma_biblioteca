@@ -33,9 +33,7 @@
                     <span>Home</span>
                 </a>
             </div>
-
             <div class="nav-group">
-
                 <details class="accordion" id="books-acc">
                     <summary aria-controls="submenu-books " aria-expanded="false">
                         <span class="material-symbols-outlined">auto_stories</span>
@@ -65,47 +63,55 @@
         <!-- Main Content -->
         <main class="content">
             <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Busque o livro por título ou autor">
-                <button class="search-btn" aria-label="Buscar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                </button>
-            </div>
+
+                <section class="search-box search-container">
+                    <input type="text" class="search-input" placeholder="Busque o livro por título ou autor">
+                    <button class="search-btn" aria-label="Buscar">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </section>
+        
 
             <!-- Stats Cards -->
             <div class="stats-grid">
+
                 <div class="stat-card">
-                    <div class="stat-indicator purple"></div>
-                    <div class="stat-content">
-                        <div class="stat-label">Alunos</div>
-                        <div class="stat-value">218</div>
+                    <div class="stat-card-icon stat-card-icon-primary">
+                        <span class="material-symbols-outlined">group</span>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="stat-label">Usuários</h3>
+                        <p class="stat-value">1.245</p>
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-indicator blue"></div>
-                    <div class="stat-content">
-                        <div class="stat-label">Livros</div>
-                        <div class="stat-value">346</div>
+                    <div class="stat-card-icon stat-card-icon-info">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="stat-label">Livros</h3>
+                        <p class="stat-value">346</p>
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-indicator green"></div>
-                    <div class="stat-content">
-                        <div class="stat-label">Livros emprestados</div>
-                        <div class="stat-value">98</div>
+                    <div class="stat-card-icon stat-card-icon-success">
+                        <span class="material-symbols-outlined">book_5</span>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="stat-label">Emprestados</h3>
+                        <p class="stat-value">98</p>
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-indicator yellow"></div>
-                    <div class="stat-content">
-                        <div class="stat-label">Atrasados</div>
-                        <div class="stat-value">4</div>
+                    <div class="stat-card-icon stat-card-icon-warning">
+                        <span class="material-symbols-outlined">overview</span>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="stat-label">Atrasados</h3>
+                        <p class="stat-value">4</p>
                     </div>
                 </div>
             </div>

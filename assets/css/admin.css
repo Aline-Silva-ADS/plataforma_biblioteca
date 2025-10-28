@@ -74,15 +74,6 @@
     }
 }
 
-/* Search Bar */
-.search-container {
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    position: relative;
-}
-
-
-
 /* Stats Grid */
 .stats-grid {
     display: grid;
@@ -94,42 +85,41 @@
 .stat-card {
     background-color: var(--color-white);
     border-radius: 12px;
-    display: flex;
-    gap: 1rem;
     box-shadow: var(--shadow-card);
     transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
+    padding: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
-.stat-content {
-    margin-top: 16px;
-    margin-bottom: 16px;
+.stat-card:hover {
+    transform: translateY(-3px);
 }
 
-.stat-indicator {
-    width: 8px;
+.stat-card-icon {
     border-radius: 12px;
-    flex-shrink: 0;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.stat-indicator.purple {
-    background-color: var(--color-primary);
+.stat-card-icon-primary {
+    background-color: #f0e6ff;
+    color: var(--color-primary);
 }
-
-.stat-indicator.blue {
-    background-color: var(--color-info);
+.stat-card-icon-info {
+    background-color: #e6f0ff;
+    color: var(--color-info);
 }
-
-.stat-indicator.green {
-    background-color: var(--color-success);
+.stat-card-icon-success {
+    background-color: #e6ffef;
+    color: var(--color-success);
 }
-
-.stat-indicator.yellow {
-    background-color: var(--color-warning);
-}
-
-.stat-content {
-    flex: 1;
+.stat-card-icon-warning {
+    background-color: #fff7e6;
+    color: var(--color-warning);
 }
 
 .stat-label {
@@ -189,13 +179,13 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .mobile-menu-btn {
         display: flex;
     }
@@ -218,12 +208,9 @@
     }
 
     .shortcuts-grid {
-        grid-template-columns: 1fr;
+         grid-template-columns: repeat(2, 1fr);
     }
 
-    .shortcut-btn.full-width {
-        max-width: 100%;
-    }
 }
 
 @media (max-width: 480px) {
@@ -255,9 +242,12 @@
         font-size: 1.125rem;
     }
 
-    .shortcut-btn {
-        padding: 0.875rem 1rem;
-        font-size: 0.875rem;
+    .shortcuts-grid {
+         grid-template-columns: 1fr;
+    }
+
+    .shortcut-btn.full-width {
+        max-width: 100%;
     }
 }
 
@@ -276,19 +266,6 @@
 .sidebar-overlay.active {
     display: block;
 }
-
-/* Focus visible for keyboard navigation */
-.nav-item:focus-visible,
-.nav-subitem:focus-visible,
-.exit-btn:focus-visible,
-.search-input:focus-visible,
-.search-btn:focus-visible,
-.shortcut-btn:focus-visible,
-.mobile-menu-btn:focus-visible {
-    outline: 2px solid var(--color-primary-dark);
-    outline-offset: 2px;
-}
-
 
 /* cadastro de livros */
 .form-container {
@@ -492,15 +469,7 @@
     width: 100%;
 }
 
-.search-box {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
 
-.search-box .input {
-    flex: 1;
-}
 
 .info-fields {
     display: flex;
@@ -551,11 +520,11 @@
     .search-section {
         padding: 0;
     }
+
     .btn-submit {
         width: 100%;
     }
 
-    .search-input,
     .date-input {
         font-size: 16px;
         /* Prevents zoom on iOS */
@@ -577,7 +546,3 @@
     align-items: center;
     gap: 0.5rem;
 }
-
-
-
-
