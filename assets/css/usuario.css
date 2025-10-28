@@ -17,7 +17,7 @@
 .books-section .section-title {
   font-size: 1.15rem;
   font-weight: bold;
-  color: #222;
+  color: var(--color-title);
 }
 
 .books-section .see-more {
@@ -78,7 +78,7 @@
 .book-title {
   font-size: 0.98rem;
   font-weight: 600;
-  color: #222;
+  color: var(--color-title);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -86,7 +86,7 @@
 
 .book-author {
   font-size: 0.92rem;
-  color: #535353;
+  color: var(--color-gray-dark);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
