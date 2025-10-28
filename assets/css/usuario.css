@@ -92,6 +92,8 @@
   text-overflow: ellipsis;
 }
 
+
+
 /* ==============================
    RESPONSIVIDADE
    ============================== */
@@ -167,6 +169,58 @@
     min-width: 0;
   }
 }
+
+/* ==============================
+   PÁGINA DE RESULTADOS DE BUSCA
+   ============================== */
+.books-section-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.static-books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.static-books-grid .book-card:last-child {
+  margin-left: 0 ;
+  /* ou margin: 0; se não quiser nenhuma margem */
+}
+
+@media (max-width: 500px) {
+  .static-books-grid .book-card {
+    flex: 1 1 calc(48% - 16px);
+    max-width: 48%;
+    margin: auto;
+  }
+}
+
+/* 601px–899px → 2 por linha */
+@media (min-width: 501px) and (max-width: 800px) {
+  .static-books-grid .book-card {
+    flex: 1 1 calc(30% - 16px);
+    max-width: 120px;
+  }
+}
+
+/* 900px–1199px → 3 por linha */
+@media (min-width: 800px) and (max-width: 1500px) {
+  .static-books-grid .book-card {
+    flex: 1 1 calc(22% - 16px);
+    max-width: 120px;
+  }
+}
+
+
+
+
+
+
+
 
 /* ==============================
    PÁGINA DE INFORMAÇÕES DO LIVRO
@@ -407,4 +461,3 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
