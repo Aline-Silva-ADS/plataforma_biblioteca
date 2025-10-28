@@ -2,34 +2,6 @@
    BUSCA / LIVROS
    ============================== */
 
-/* barra de busca */
-.search-bar {
-  margin-bottom: 18px;
-}
-
-.search-form {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.input-search {
-  flex: 1;
-  margin-bottom: 0;
-}
-
-.btn-search {
-  margin-top: 0;
-  border: none;
-  border-radius: 6px;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-}
-
 /* Seções de livros */
 .books-section {
   margin-bottom: 28px;
