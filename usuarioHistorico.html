@@ -12,12 +12,13 @@
 </head>
 
 <body>
+  <!-- menu -->
   <header class="topbar" role="banner">
     <button class="hamburger" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
       <span class="material-symbols-outlined">menu</span>
     </button>
     <div class="brand">
-      <span>Meus Livros</span>
+      <span>Biblioteca</span>
     </div>
   </header>
   <!-- fim do menu -->
@@ -25,14 +26,14 @@
     <!-- menu lateral -->
     <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
       <div class="nav-group">
-        <a class="nav-item " href="usuarioHome.html">
-          <span class="material-symbols-outlined">home</span>
+        <a class="nav-item active" href="usuarioHome.html">
+          <span class="material-symbols-outlined">menu_book</span>
           <span>Buscar livros</span>
         </a>
       </div>
       <div class="nav-group">
-        <a class="nav-item active" href="usuarioHistorico.html">
-          <span class="material-symbols-outlined">home</span>
+        <a class="nav-item " href="usuarioHistorico.html">
+          <span class="material-symbols-outlined">library_books</span>
           <span>Meus livros</span>
         </a>
       </div>
@@ -53,7 +54,7 @@
     <div class="backdrop" id="backdrop"></div>
     <!-- conteúdo -->
     <main class="content-book-history" role="main">
-      <div class="page-title">MEUS LIVROS</div>
+      <div class="title"> <span>Histórico de Livros</span> </div>
       <div class="books-history-list-card">
         <div class="book-history-card">
           <div class="book-title">Nome do Livro</div>
