@@ -3,27 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('script.js carregado e DOM pronto'); // Apenas uma mensagem de teste no console
 
     // ===============================
-    // 🔐 Exibir/Ocultar senha
-    // ===============================
-    const senhaInput = document.getElementById('senha'); // Campo de senha
-    const toggleBtn = document.getElementById('toggleSenha'); // Botão com ícone de olho
-    const icon = toggleBtn?.querySelector('.material-symbols-outlined'); // Ícone dentro do botão
-
-    // Se o botão e o campo existirem, ativa o evento de clique
-    if (toggleBtn && senhaInput) {
-        toggleBtn.addEventListener('click', function () {
-            // Alterna entre mostrar e ocultar a senha
-            if (senhaInput.type === 'password') {
-                senhaInput.type = 'text';
-                if (icon) icon.textContent = 'visibility_off'; // Ícone de "olho fechado"
-            } else {
-                senhaInput.type = 'password';
-                if (icon) icon.textContent = 'visibility'; // Ícone de "olho aberto"
-            }
-        });
-    }
-
-    // ===============================
     // 📱 Menu lateral (drawer mobile)
     // ===============================
     const btn = document.querySelector('.hamburger'); // Botão do menu (ícone "☰")

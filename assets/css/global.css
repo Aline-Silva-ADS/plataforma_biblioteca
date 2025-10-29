@@ -175,6 +175,11 @@ body {
   color: var(--color-primary-dark);
 }
 
+strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
 input::placeholder {
   color: var(--color-gray-light);
   font-size: 0.875rem;
@@ -197,7 +202,7 @@ input::placeholder {
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
   padding: 2px 10px;
-} 
+}
 
 .badge-status--info {
   background: var(--color-info);
@@ -248,12 +253,13 @@ input::placeholder {
 
 .title {
   text-align: center;
-  color: var(--color-title);
-  font-size: 1.1rem;
-  font-weight: 700;
+  color: var(--color-gray-dark);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
-.subtitle{
+.subtitle {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-title);
@@ -334,8 +340,8 @@ input::placeholder {
    ============================== */
 label,
 .label {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
   margin-bottom: 6px;
   display: block;
   color: var(--color-text);
@@ -690,6 +696,10 @@ th {
     width: 100%;
   }
 
+  .search-box-table input {
+    width: 100%;
+  }
+
   .responsive-table thead {
     display: none;
   }
@@ -731,11 +741,6 @@ th {
     justify-content: flex-end;
     padding: 10px 8px;
     border: none;
-  }
-
-  .responsive-table td:last-child {
-    text-align: center;
-    margin-top: 10px;
   }
 
   .search-box-table {
