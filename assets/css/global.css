@@ -748,3 +748,35 @@ th {
     margin-top: 20px;
   }
 }
+
+/*===============================
+   PAGINA 404
+   ============================== */
+.error-container {
+  padding: 40px 60px;
+  max-width: 480px;
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.error-title {
+  font-size: 1.5rem;
+  color: var(--color-title);
+  margin-bottom: 15px;
+}
+
+.error-message {
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.error-button {
+  padding: 12px 24px;
+  text-decoration: none;
+}
+
