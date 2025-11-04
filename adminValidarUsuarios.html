@@ -21,8 +21,10 @@
             <span>Biblioteca</span>
         </div>
         <div class="action" role="button" tabindex="0">
+            <a href="index.html"  class="logout-link">
             <span class="material-symbols-outlined">logout</span>
             <span>Sair</span>
+            </a>
         </div>
     </header>
 
@@ -37,7 +39,7 @@
 
             <div class="nav-group">
                 <details class="accordion" id="books-acc">
-                    <summary aria-controls="submenu-books" class="active" aria-expanded="false">
+                    <summary aria-controls="submenu-books"  aria-expanded="false">
                         <span class="material-symbols-outlined">auto_stories</span>
                         <span>Livros </span>
                         <span class="material-symbols-outlined" id="icon-align-right"> keyboard_arrow_down</span>
@@ -45,14 +47,14 @@
                     <div id="submenu-books" class="submenu" role="region" aria-label="Submenu Livros">
                         <a href="adminCadastrarLivros.html">Cadastrar</a>
                         <a href="adminEmprestarLivros.html">Emprestar livros</a>
-                        <a href="#retirada">Retirada / Devolução de livros</a>
-                        <a href="#historico">Histórico</a>
-                        <a href="#listar">Listar todos</a>
+                        <a href="adminLivrosRetiradaDevolucao.html">Retirada / Devolução de livros</a>
+                        <a href="adminLivrosHistorico.html">Histórico</a>
+                        <a href="adminLivrosListar.html">Listar todos</a>
                     </div>
                 </details>
             </div>
             <div class="nav-group">
-                <a class="nav-item" href="#usuarios">
+                <a class="nav-item active" href="#usuarios">
                     <span class="material-symbols-outlined">group</span>
                     <span>Verificar usuários</span>
                 </a>
@@ -67,7 +69,7 @@
                 <div class="card-table-header">
                     <div class="table-text">
                         <h2 class="title text-start">Validar Usuários</h2>
-                        <p>Clique em <span>ativar</span> para validar os usuários cadastrados</p>
+                        <p>Clique em <span>validar</span> para validar os usuários cadastrados</p>
                     </div>
                     <div class="search-box-table">
                         <input type="text" class="input " placeholder="Buscar pelo RA">
@@ -98,7 +100,7 @@
                                         <span>Pendente</span>
                                     </div>
                                 </td>
-                                <td data-label="Ações"><button class="btn btn-table btn-success">Ativar</button></td>
+                                <td data-label="Ações"><button class="btn btn-table btn-success">Validar</button></td>
                             </tr>
                             <tr>
                                 <td data-label="RA"><strong>2023102</strong></td>
@@ -111,7 +113,7 @@
                                         <span>Pendente</span>
                                     </div>
                                 </td>
-                                <td data-label="Ações"><button class="btn btn-table btn-success">Ativar</button></td>
+                                <td data-label="Ações"><button class="btn btn-table btn-success">Validar</button></td>
                             </tr>
                             <tr>
                                 <td data-label="RA"><strong>2023102</strong></td>
@@ -124,7 +126,7 @@
                                         <span>Pendente</span>
                                     </div>
                                 </td>
-                                <td data-label="Ações"><button class="btn btn-table btn-success">Ativar</button></td>
+                                <td data-label="Ações"><button class="btn btn-table btn-success">Validar</button></td>
                             </tr>
                             <tr>
                                 <td data-label="RA"><strong>2023103</strong></td>
@@ -137,7 +139,7 @@
                                         <span>Pendente</span>
                                     </div>
                                 </td>
-                                <td data-label="Ações"><button class="btn btn-table btn-success">Ativar</button></td>
+                                <td data-label="Ações"><button class="btn btn-table btn-success">Validar</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -146,7 +148,7 @@
         </main>
     </div>
 
-
+<script src="assets/js/script.js"></script>
 </body>
 
 </html>

@@ -209,13 +209,6 @@
   }
 }
 
-
-
-
-
-
-
-
 /* ==============================
    PÁGINA DE INFORMAÇÕES DO LIVRO
    ============================== */
@@ -368,6 +361,7 @@
     justify-content: flex-start;
     gap: 10px;
   }
+
   .info-book-item {
     width: 29%;
     margin-bottom: 5px;
@@ -469,15 +463,55 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 /* ==============================
    PÁGINA DE DADOS DO USUÁRIO
    ============================== */
+/* Faz o card e o formulário usarem flex-column para a .empty-space empurrar o botão para baixo */
 .card-dados {
-  padding: 32px 24px 24px 24px; 
-}
-.user-data-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* ajuste a altura conforme necessário para o seu layout (ex.: header + margins) */
+  height: calc(100vh - 120px);
+  min-height: 400px;
+  padding-bottom: 0;
+}
+
+form#atualizar-dados {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+form#atualizar-dados .user-data-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+form#atualizar-dados .user-data-item{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
+}
+
+form#atualizar-dados .empty-space {
+  flex: 1 1 auto ;
+}
+
+form#atualizar-dados .btn {
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+@media (min-width: 480px) {
+  .card-dados {
+    padding: 24px;
+    max-width: 400px;
+    margin: auto;
+  }
+
 }

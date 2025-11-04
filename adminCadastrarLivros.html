@@ -22,22 +22,23 @@
             <span>Biblioteca</span>
         </div>
         <div class="action" role="button" tabindex="0">
-            <span class="material-symbols-outlined">logout</span>
-            <span>Sair</span>
+            <a href="index.html" class="logout-link">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
         </div>
     </header>
 
     <div class="layout">
         <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
             <div class="nav-group">
-                <a class="nav-item " href="adminHome.html">
+                <a class="nav-item" href="adminHome.html">
                     <span class="material-symbols-outlined">home</span>
                     <span>Home</span>
                 </a>
             </div>
 
             <div class="nav-group">
-
                 <details class="accordion" id="books-acc">
                     <summary aria-controls="submenu-books" class="active" aria-expanded="false">
                         <span class="material-symbols-outlined">auto_stories</span>
@@ -45,15 +46,14 @@
                         <span class="material-symbols-outlined" id="icon-align-right"> keyboard_arrow_down</span>
                     </summary>
                     <div id="submenu-books" class="submenu" role="region" aria-label="Submenu Livros">
-                        <a href="adminCadastrarLivros.html">Cadastrar</a>
+                        <a href="adminCadastrarLivros.html" class="submenu-active">Cadastrar</a>
                         <a href="adminEmprestarLivros.html">Emprestar livros</a>
-                        <a href="#retirada">Retirada / Devolução de livros</a>
-                        <a href="#historico">Histórico</a>
-                        <a href="#listar">Listar todos</a>
+                        <a href="adminLivrosRetiradaDevolucao.html">Retirada / Devolução de livros</a>
+                        <a href="adminLivrosHistorico.html">Histórico</a>
+                        <a href="adminLivrosListar.html">Listar todos</a>
                     </div>
                 </details>
             </div>
-
             <div class="nav-group">
                 <a class="nav-item" href="#usuarios">
                     <span class="material-symbols-outlined">group</span>
@@ -99,7 +99,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="genres">Categoria(s)</label>
-                            <select id="genres" name="genres" class="input" multiple >
+                            <select id="genres" name="genres" class="input" multiple>
                                 <option value="">Categoria1</option>
                                 <option value="categoria1">Categoria1</option>
                                 <option value="categoria2">Categoria2</option>
@@ -111,7 +111,7 @@
                         <div class="form-column">
                             <div class="form-group">
                                 <label for="publisher">Editora</label>
-                                <input type="text" id="publisher" name="publisher" class="input" >
+                                <input type="text" id="publisher" name="publisher" class="input">
                             </div>
                             <div class="form-group">
                                 <label for="edition">Edição</label>

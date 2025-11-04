@@ -26,7 +26,7 @@
         <!-- menu lateral -->
         <nav id="sidebar" class="sidebar" aria-label="Menu lateral">
             <div class="nav-group">
-                <a class="nav-item active" href="usuarioHome.html">
+                <a class="nav-item " href="usuarioHome.html">
                     <span class="material-symbols-outlined">menu_book</span>
                     <span>Buscar livros</span>
                 </a>
@@ -38,13 +38,13 @@
                 </a>
             </div>
             <div class="nav-group">
-                <a class="nav-item" href="#meus-dados">
+                <a class="nav-item active" href="usuarioDados.html">
                     <span class="material-symbols-outlined">group</span>
                     <span>Meus Dados</span>
                 </a>
             </div>
             <div class="nav-group">
-                <a class="nav-item" href="#meus-dados">
+                <a class="nav-item" href="index.html">
                     <span class="material-symbols-outlined">logout</span>
                     <span>Sair</span>
                 </a>
@@ -53,9 +53,9 @@
         <!-- fim do menu lateral -->
         <div class="backdrop" id="backdrop"></div>
         <!-- conteúdo -->
-        <main class="content flex" role="main">
+        <main class="content" role="main">
             <div class="card card-mobile-none card-dados">
-                <form action="">
+                <form action="" id="atualizar-dados">
                     <h1 class="title">Meus Dados</h1>
                     <div class="user-data-container">
                         <div class="user-data-item">
@@ -70,7 +70,9 @@
                             <label class="label">Telefone:</label>
                             <input class="input" value="(11) 98765-4321" >
                         </div>
-                        <button class="btn btn-success">Salvar</button>
+                       
+                        <div class="empty-space"></div>
+                        <button class="btn btn-primary">Salvar</button>
                 </form>
             </div>
     </div>

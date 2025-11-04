@@ -467,6 +467,12 @@ label,
   margin-left: auto;
 }
 
+.logout-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
 /* ==============================
    SUBMENU (ACCORDION)
    ============================== */
@@ -531,6 +537,9 @@ label,
 .submenu a:hover {
   background: #f2f2f6;
   color: var(--color-text);
+}
+.submenu a.submenu-active {
+  color: var(--color-primary);
 }
 
 /* ==============================
