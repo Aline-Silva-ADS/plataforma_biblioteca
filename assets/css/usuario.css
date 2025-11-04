@@ -181,7 +181,7 @@
 }
 
 .static-books-grid .book-card:last-child {
-  margin-left: 0 ;
+  margin-left: 0;
   /* ou margin: 0; se não quiser nenhuma margem */
 }
 
@@ -274,7 +274,21 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
+}
+
+.info-book-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.info-book-item {
+  display: inline-flex;
+  gap: 5px;
+  margin-bottom: 5px;
 }
 
 .info-book-description,
@@ -345,6 +359,18 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+  }
+
+  .info-book-content {
+    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .info-book-item {
+    width: 29%;
+    margin-bottom: 5px;
   }
 
   .info-book-description,
@@ -442,4 +468,16 @@
   .books-history-list-card {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+/* ==============================
+   PÁGINA DE DADOS DO USUÁRIO
+   ============================== */
+.card-dados {
+  padding: 32px 24px 24px 24px; 
+}
+.user-data-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
 }

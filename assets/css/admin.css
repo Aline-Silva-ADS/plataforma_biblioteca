@@ -268,11 +268,6 @@
     color: var(--color-danger);
 }
 
-.optional {
-    color: var(--color-gray-dark);
-    font-weight: 400;
-}
-
 .hint {
     color: var(--color-gray-dark);
     font-weight: 400;
