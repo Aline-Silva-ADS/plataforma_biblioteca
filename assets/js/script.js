@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (coverInput && coverPreview) {
         coverInput.addEventListener('change', function (e) {
+    // (Lógica de cadastro movida para assets/js/cadastro.js)
             const file = e.target.files[0]; // Pega o arquivo selecionado
             if (file) {
                 const reader = new FileReader(); // Cria um leitor de arquivo

@@ -16,7 +16,7 @@
         <section class="card card-login">
             <h1 class="title-login">Cadastro</h1>
             <!-- formulario -->
-            <form class="form-login">
+            <form id="formCadastro" class="form-login">
                 <label for="nome" class="label">Nome Completo <span class="required">*</span></label>
                 <input type="text" id="nome" name="nome" class="input input-primary " required>
 
@@ -24,7 +24,11 @@
                 <input type="text" id="ra" name="ra" class="input input-primary " required>
 
                 <label for="telefone" class="label">Telefone <span class="required">*</span></label>
-                <input type="tel" id="telefone" name="telefone" class="input input-primary " placeholder="+55 (DDD) 99999-9999" required>
+                <input type="tel" id="telefone" name="telefone" class="input input-primary " placeholder="(xx) xxxxx-xxxx" required>
+                <!-- Campos padrões solicitados pelo banco: tipo_usuario = aluno, situacao = pendente, data_cadastro = gerada pelo sistema -->
+                <input type="hidden" id="tipo_usuario" name="tipo_usuario" value="aluno">
+                <input type="hidden" id="situacao" name="situacao" value="pendente">
+                <input type="hidden" id="data_cadastro" name="data_cadastro" value="">
 
                 <button type="submit" class="btn btn-full">Salvar</button>
             </form>
@@ -36,6 +40,7 @@
         <!-- fim card de cadastro -->
     </div>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/cadastro.js"></script>
 </body>
 
 </html>
