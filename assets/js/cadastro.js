@@ -17,27 +17,60 @@ document.addEventListener('DOMContentLoaded', function () {
     // Define valor inicial quando a página carrega
     if (dataCadastroInput) dataCadastroInput.value = getNowSQL();
 
-    // Garante que o valor será atualizado imediatamente antes do submit (por segurança)
+    // Envio AJAX para API REST
     if (cadastroForm) {
-        cadastroForm.addEventListener('submit', function (e) {
+        cadastroForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
             if (dataCadastroInput) dataCadastroInput.value = getNowSQL();
 
             // Validação do telefone antes de permitir o envio
             if (telefoneInput) {
                 const phoneClean = telefoneInput.value.replace(/\D/g, '');
-                // Aceitamos DDD + 9 dígitos (celular) => total 11 dígitos (ex: 11999998888)
                 const valid = /^(?:55)?\d{10,11}$/.test(phoneClean);
                 if (!valid) {
-                    telefoneInput.setCustomValidity('Telefone inválido. Use o formato (XX) 9XXXX-XXXX.');
-                    telefoneInput.reportValidity();
-                    e.preventDefault();
-                    return false;
-                } else {
-                    telefoneInput.setCustomValidity('');
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Telefone inválido',
+                        text: 'Use o formato (XX) 9XXXX-XXXX.'
+                    });
+                    return;
                 }
             }
 
-            // Mantemos o envio padrão (form submit). Se preferir AJAX, posso alterar aqui.
+            // Monta os dados do formulário
+            const formData = new FormData(cadastroForm);
+            const data = {};
+            formData.forEach((value, key) => { data[key] = value; });
+
+            try {
+                const resp = await fetch('http://localhost:3001/api/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await resp.json();
+                if (result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Usuário cadastrado!',
+                        text: 'Cadastro realizado com sucesso.'
+                    }).then(() => {
+                        window.location.href = 'index.html';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro ao cadastrar',
+                        text: result.message || result.error || 'Erro desconhecido.'
+                    });
+                }
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro de conexão',
+                    text: 'Não foi possível conectar ao servidor.'
+                });
+            }
         });
     }
 
