@@ -3,6 +3,22 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
+// PATCH /api/users/:id/ativar
+// Atualiza a situação do usuário para 'ativo'
+router.patch('/:id/ativar', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const [result] = await pool.execute('UPDATE usuarios SET situacao = ? WHERE id_usuario = ?', ['ativo', id]);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Usuário não encontrado.' });
+    }
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Erro ao ativar usuário:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // GET /api/users/alunos
 // Lista todos os usuários do tipo 'aluno'
 router.get('/alunos', async (req, res) => {

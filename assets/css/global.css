@@ -682,6 +682,9 @@ th {
   border-radius: 50%;
   background: var(--color-warning);
 }
+.dot.ativo {
+  background: var(--color-success);
+}
 
 .btn-table {
   border-radius: 5px;
