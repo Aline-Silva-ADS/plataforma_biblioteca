@@ -1,7 +1,30 @@
-// backend/api/users.js
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+
+// POST /api/users/send-code
+// Recebe { telefone }, verifica se existe, gera código e simula envio (retorna o código)
+router.post('/send-code', async (req, res) => {
+  const { telefone } = req.body;
+  if (!telefone) {
+    return res.status(400).json({ success: false, message: 'Telefone é obrigatório.' });
+  }
+  try {
+    const [rows] = await pool.execute('SELECT id_usuario FROM usuarios WHERE telefone = ?', [telefone]);
+    if (rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Telefone não encontrado.' });
+    }
+    // Gera código de 6 dígitos
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    // Aqui você salvaria o código no banco/cache para validação posterior
+    // Simula envio do código (no real, usaria Twilio)
+    return res.json({ success: true, code, message: `Código enviado para ${telefone}` });
+  } catch (err) {
+    console.error('Erro ao simular envio de código:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 function getNowSQL() {
   const d = new Date();

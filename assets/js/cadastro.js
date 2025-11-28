@@ -38,12 +38,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             // Monta os dados do formulário
+
             const formData = new FormData(cadastroForm);
             const data = {};
             formData.forEach((value, key) => { data[key] = value; });
+            // Remove máscara do telefone antes de enviar
+            if (telefoneInput) {
+                data.telefone = telefoneInput.value.replace(/\D/g, '');
+            }
 
             try {
-                const resp = await fetch('http://localhost:3001/api/users', {
+                const resp = await fetch('http://127.0.0.1:3001/api/users', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
