@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const result = await resp.json();
             if (result.success) {
+                // Salva telefone para validação posterior
+                sessionStorage.setItem('telefone_login', telefone);
                 alert('Código enviado (simulado): ' + result.code);
                 window.location.href = 'usuarioValidar.html';
             } else {

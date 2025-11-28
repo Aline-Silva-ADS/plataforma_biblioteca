@@ -3,6 +3,28 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
+// POST /api/users/validate-code
+// Recebe { telefone, codigo }, simula validação e retorna dados do usuário
+router.post('/validate-code', async (req, res) => {
+  const { telefone, codigo } = req.body;
+  if (!telefone || !codigo) {
+    return res.status(400).json({ success: false, message: 'Telefone e código são obrigatórios.' });
+  }
+  try {
+    // Busca usuário pelo telefone
+    const [rows] = await pool.execute('SELECT id_usuario, nome, tipo_usuario FROM usuarios WHERE telefone = ?', [telefone]);
+    if (rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Usuário não encontrado.' });
+    }
+    // Simula validação do código (aceita qualquer código)
+    const user = rows[0];
+    return res.json({ success: true, id_usuario: user.id_usuario, nome: user.nome, tipo_usuario: user.tipo_usuario });
+  } catch (err) {
+    console.error('Erro ao validar código:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // POST /api/users/send-code
 // Recebe { telefone }, verifica se existe, gera código e simula envio (retorna o código)
 router.post('/send-code', async (req, res) => {

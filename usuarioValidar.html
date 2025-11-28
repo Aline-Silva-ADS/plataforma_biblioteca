@@ -4,33 +4,33 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Recuperação de Senha</title>
+    <title>Validação de Código</title>
     <link rel="stylesheet" href="assets/css/global.css">
 </head>
 
 <body>
     <div class="content-full flex">
-        <!-- Card de Recuperação -->
+        <!-- Card de Validação -->
         <section class="card card-login">
             <h1 class="title-login">Validação de Código</h1>
             <p class="text-instruction">
                 Digite o código de validação enviado para seu celular.
             </p>
             <!-- formulario -->
-            <form class="form-login">
+            <form class="form-login" autocomplete="off">
                 <label for="codigo" class="label-login">Código de Validação</label>
-                <input type="text" id="codigo" name="codigo" class="input input-primary" required
-                    autocomplete="off">
-                <button type="submit" class="btn btn-login">Validar</button>
+                <input type="text" id="codigo" name="codigo" class="input input-primary" required maxlength="6" pattern="\d{4,6}" autofocus inputmode="numeric" title="Digite apenas números (4 a 6 dígitos)">
+                <button type="submit" class="btn btn-full">Validar</button>
             </form>
             <!-- fim do formulario -->
-            <div class="links-login" >
+            <div class="links-login">
                 <a href="index.html" class="links">Voltar ao login</a>
             </div>
         </section>
-        <!-- fim card de recuperação -->
+        <!-- fim card de validação -->
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/validar.js"></script>
 </body>
 
