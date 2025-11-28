@@ -3,6 +3,18 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
+// GET /api/users/alunos
+// Lista todos os usuários do tipo 'aluno'
+router.get('/alunos', async (req, res) => {
+  try {
+    const [rows] = await pool.execute('SELECT id_usuario, nome, telefone, RA, data_cadastro, situacao FROM usuarios WHERE tipo_usuario = ?', ['aluno']);
+    res.json({ success: true, alunos: rows });
+  } catch (err) {
+    console.error('Erro ao buscar alunos:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // POST /api/users/validate-code
 // Recebe { telefone, codigo }, simula validação e retorna dados do usuário
 router.post('/validate-code', async (req, res) => {
