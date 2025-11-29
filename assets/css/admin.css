@@ -1,3 +1,4 @@
+
 /* ==============================
    VARIÁVEIS GLOBAIS
    ============================== */
@@ -511,4 +512,43 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+#card-book-loan h2.title {
+   margin-bottom: 24px;
+}
+
+.detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    font-size: 1.05rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+.detail-row:last-child {
+    border-bottom: none;
+}
+.detail-value {
+    color: var(--color-gray-dark);
+    font-weight: 400;
+}
+.status-row {
+    background: #f6fff6;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #d2f5d2;
+}
+.synopsis-section {
+    margin-top: 2rem;
+}
+.synopsis-box {
+    background: #f8f8fa;
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    color: #444;
+    font-size: 1.05rem;
+    min-height: 60px;
+    box-shadow: 0 1px 4px rgba(80,0,255,0.04);
 }
