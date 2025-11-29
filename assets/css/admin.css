@@ -238,7 +238,6 @@
 /* Select de categorias mais largo e confortável */
 /* Select de categorias mais largo e confortável */
 #genres.input {
-    min-width: 260px;
     width: 100%;
     max-width: 100%;
     padding: 14px 10px;

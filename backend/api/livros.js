@@ -19,7 +19,13 @@ const upload = multer({ storage });
 
 // POST /api/livros - cadastra livro com capa
 router.post('/', upload.single('capa'), async (req, res) => {
-  const { title, authors, genres, publisher, edition, isbn, language, pages, year, quantity, location, description } = req.body;
+  let { title, authors, genres, publisher, edition, isbn, language, pages, year, quantity, location, description } = req.body;
+  // Se authors vier como string (por compatibilidade), transforma em array
+  if (typeof authors === 'string') {
+    authors = [authors];
+  } else if (!Array.isArray(authors)) {
+    authors = [];
+  }
   const capa = req.file ? 'uploads/capas/' + req.file.filename : null;
   const conn = await pool.getConnection();
   try {
@@ -41,8 +47,8 @@ router.post('/', upload.single('capa'), async (req, res) => {
     }
 
     // 3. Inserir autores e relacionamento
-    // Suporta múltiplos autores separados por vírgula
-    const autorNomes = (authors || '').split(',').map(a => a.trim()).filter(Boolean);
+    // Suporta múltiplos autores via array
+    const autorNomes = (authors || []).map(a => a.trim()).filter(Boolean);
     for (const nome of autorNomes) {
       // Verifica se autor já existe
       let [autorRows] = await conn.execute('SELECT id_autor FROM autores WHERE nome = ?', [nome]);

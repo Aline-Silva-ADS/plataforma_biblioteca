@@ -1,3 +1,4 @@
+
 /* ==============================
    VARIÁVEIS GLOBAIS
    ============================== */
@@ -297,6 +298,26 @@ input::placeholder {
   box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
 }
 
+.author-field {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.author-input {
+  flex:  1;
+  height: 38px;
+}
+
+.btn-add-author, .btn-remove-author {
+  flex: 0 0 auto;
+  height: 38px;
+  margin-top: 0px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+}
+
 .btn-submit {
   background-color: var(--color-success);
   color: var(--color-white);
@@ -473,6 +494,7 @@ label,
   display: flex;
   align-items: center;
 }
+
 /* ==============================
    SUBMENU (ACCORDION)
    ============================== */
@@ -538,6 +560,7 @@ label,
   background: #f2f2f6;
   color: var(--color-text);
 }
+
 .submenu a.submenu-active {
   color: var(--color-primary);
 }
@@ -682,6 +705,7 @@ th {
   border-radius: 50%;
   background: var(--color-warning);
 }
+
 .dot.ativo {
   background: var(--color-success);
 }
@@ -793,5 +817,5 @@ th {
 }
 
 .required {
-    color: var(--color-danger);
+  color: var(--color-danger);
 }
