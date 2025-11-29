@@ -28,6 +28,7 @@
    CARROSSEL DE LIVROS
    ============================== */
 .carousel-wrapper {
+  margin-top: 2.75rem;
   position: relative;
 }
 
@@ -252,7 +253,7 @@
 
 .info-book-title {
   text-align: center;
-  margin-bottom: 2px;
+  margin-bottom: 1rem;
   margin-top: 0;
 }
 
@@ -272,15 +273,14 @@
 
 .info-book-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 10px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.info-book-item {
-  display: inline-flex;
-  gap: 5px;
+.info-book-item{
+  display: block;
   margin-bottom: 5px;
 }
 
@@ -292,6 +292,7 @@
   width: 100%;
   box-sizing: border-box;
   text-transform: justify;
+  margin-top: 20px;
 }
 
 .btn-container {
@@ -365,6 +366,7 @@
   .info-book-item {
     width: 29%;
     margin-bottom: 5px;
+   
   }
 
   .info-book-description,
@@ -391,6 +393,13 @@
 .info-book-loan-dates {
   color: var(--color-gray-dark);
   font-size: 0.8rem;
+}
+.emprestar-datas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  flex-wrap: wrap;
 }
 
 /* ==============================

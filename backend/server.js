@@ -18,8 +18,12 @@ const livrosRouter = require('./api/livros');
 app.use('/api/livros', livrosRouter);
 const usersRouter = require('./api/users');
 app.use('/api/users', usersRouter);
+
 const categoriasRouter = require('./api/categorias');
 app.use('/api/categorias', categoriasRouter);
+
+const reservasRouter = require('./api/reservas');
+app.use('/api/reservas', reservasRouter);
 
 // Optional: serve static files from project root (if you want Node to serve the frontend)
 // app.use(express.static(path.join(__dirname, '..')));
