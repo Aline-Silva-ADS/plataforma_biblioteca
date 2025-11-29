@@ -11,8 +11,8 @@ const fs = require('fs');
 router.get('/', async (req, res) => {
   const conn = await pool.getConnection();
   try {
-    const [livros] = await conn.query('SELECT l.id_livro, l.titulo, l.quantidade_total FROM livros l');
-    
+    const [livros] = await conn.query('SELECT l.id_livro, l.titulo, l.quantidade_total, l.capa FROM livros l');
+
     // Buscar autores
     for (const livro of livros) {
       const [autores] = await conn.query(
