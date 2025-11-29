@@ -42,29 +42,34 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.info-book-item .info-book-value')[2].textContent = livro.numero_paginas || '';
             // Idioma
             document.querySelectorAll('.info-book-item .info-book-value')[3].textContent = livro.idioma || '';
-            // Disponibilidade
-            const dispSpan = document.querySelectorAll('.info-book-item .info-book-value')[4];
-            dispSpan.innerHTML = livro.quantidade_disponivel > 0 ? '<span class="text-success">Disponível</span>' : '<span class="text-danger">Indisponível</span>';
             // Descrição
             const desc = document.querySelector('.info-book-description');
             if (desc) desc.textContent = livro.descricao || '';
 
-            // Botão emprestar
-            const btnEmprestar = document.querySelector('.info-book-btn');
-            if (btnEmprestar) {
-                if (livro.quantidade_disponivel > 0) {
-                    btnEmprestar.disabled = false;
-                    btnEmprestar.textContent = 'Emprestar Livro';
-                    btnEmprestar.classList.remove('btn-disabled');
-                    btnEmprestar.addEventListener('click', function () {
-                        // Redireciona para a página de empréstimo, passando o id do livro
-                        window.location.href = `usuarioLivroEmprestar.html?id=${livro.id_livro}`;
-                    });
-                } else {
-                    btnEmprestar.disabled = true;
-                    btnEmprestar.textContent = 'Livro Indisponível';
-                    btnEmprestar.classList.add('btn-disabled');
-                }
-            }
+            // Verificar cópias disponíveis
+            fetch(`http://127.0.0.1:3001/api/copias/disponiveis/${livro.id_livro}`)
+                .then(resp => resp.json())
+                .then(copiasData => {
+                    const dispSpan = document.querySelectorAll('.info-book-item .info-book-value')[4];
+                    const btnEmprestar = document.querySelector('.info-book-btn');
+                    if (copiasData.disponiveis > 0) {
+                        dispSpan.innerHTML = `<span class="text-success">Disponível (${copiasData.disponiveis})</span>`;
+                        if (btnEmprestar) {
+                            btnEmprestar.disabled = false;
+                            btnEmprestar.textContent = 'Emprestar Livro';
+                            btnEmprestar.classList.remove('btn-disabled');
+                            btnEmprestar.addEventListener('click', function () {
+                                window.location.href = `usuarioLivroEmprestar.html?id=${livro.id_livro}`;
+                            });
+                        }
+                    } else {
+                        dispSpan.innerHTML = '<span class="text-danger">Indisponível</span>';
+                        if (btnEmprestar) {
+                            btnEmprestar.disabled = true;
+                            btnEmprestar.textContent = 'Livro Indisponível';
+                            btnEmprestar.classList.add('btn-disabled');
+                        }
+                    }
+                });
         });
 });

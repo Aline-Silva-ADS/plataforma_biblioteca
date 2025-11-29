@@ -14,8 +14,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads/capas', express.static(path.join(__dirname, '../uploads/capas')));
 
 // Routers
+const copiasRouter = require('./api/copias');
+app.use('/api/copias', copiasRouter);
+
 const livrosRouter = require('./api/livros');
 app.use('/api/livros', livrosRouter);
+
 const usersRouter = require('./api/users');
 app.use('/api/users', usersRouter);
 
@@ -25,8 +29,8 @@ app.use('/api/categorias', categoriasRouter);
 const reservasRouter = require('./api/reservas');
 app.use('/api/reservas', reservasRouter);
 
-// Optional: serve static files from project root (if you want Node to serve the frontend)
-// app.use(express.static(path.join(__dirname, '..')));
-
+// Porta
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Backend API running on port ${PORT} (process.env.PORT=${process.env.PORT})`));
+app.listen(PORT, () =>
+  console.log(`Backend API running on port ${PORT} (process.env.PORT=${process.env.PORT})`)
+);
