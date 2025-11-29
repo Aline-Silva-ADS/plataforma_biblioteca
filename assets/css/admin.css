@@ -229,11 +229,31 @@
 
 /* cadastro de livros */
 .form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 12px;
-    padding: 2.5rem;
-} 
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 12px;
+        padding: 2.5rem;
+}
+
+/* Select de categorias mais largo e confortável */
+/* Select de categorias mais largo e confortável */
+#genres.input {
+    min-width: 260px;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 10px;
+    font-size: 1rem;
+    height: 48px;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+@media (max-width: 600px) {
+    #genres.input {
+        min-width: 0;
+        width: 100%;
+        font-size: 0.98rem;
+    }
+}
 
 /* Form Styles */
 .book-form {
