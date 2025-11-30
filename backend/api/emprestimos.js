@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     const prazoValidade = new Date(dataReserva.getTime() + 8 * 60 * 60 * 1000); // 8 horas
     await conn.query(
       'INSERT INTO reservas (id_usuario, id_livro, data_reserva, prazo_validade, status) VALUES (?, ?, ?, ?, ?)',
-      [id_usuario, id_livro, dataReserva, prazoValidade, 'ativo']
+      [id_usuario, id_livro, dataReserva, prazoValidade, 'ativa']
     );
     // 3. Inserir empréstimo
     await conn.query(

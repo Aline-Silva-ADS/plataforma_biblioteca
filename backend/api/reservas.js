@@ -1,6 +1,21 @@
+
 const express = require('express');
-const router = express.Router();
 const pool = require('../config/db');
+const router = express.Router();
+
+// PATCH /api/reservas/:id/emprestar - atualiza status da reserva para 'emprestada'
+router.patch('/:id/emprestar', async (req, res) => {
+  const { id } = req.params;
+  const conn = await pool.getConnection();
+  try {
+    await conn.query('UPDATE reservas SET status = ? WHERE id_reserva = ?', ['emprestada', id]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  } finally {
+    conn.release();
+  }
+});
 
 // POST /api/reservas - cria uma nova reserva
 router.post('/', async (req, res) => {
@@ -12,7 +27,7 @@ router.post('/', async (req, res) => {
   try {
     const dataReserva = new Date();
     const prazoValidade = new Date(dataReserva.getTime() + 8 * 60 * 60 * 1000); // 8 horas
-    const status = 'ativo';
+    const status = 'ativa';
     await conn.query(
       'INSERT INTO reservas (id_usuario, id_livro, data_reserva, prazo_validade, status) VALUES (?, ?, ?, ?, ?)',
       [id_usuario, id_livro, dataReserva, prazoValidade, status]
