@@ -1,8 +1,21 @@
 
-
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+
+// GET /api/users/ra/:ra - busca aluno pelo RA
+router.get('/ra/:ra', async (req, res) => {
+  const { ra } = req.params;
+  try {
+    const [rows] = await pool.execute('SELECT * FROM usuarios WHERE RA = ?', [ra]);
+    if (!rows.length) {
+      return res.status(404).json({ success: false, message: 'Aluno não encontrado.' });
+    }
+    return res.json({ success: true, usuario: rows[0] });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 
 // PATCH /api/users/:id/ativar

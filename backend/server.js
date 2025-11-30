@@ -1,9 +1,11 @@
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
+const emprestimosRouter = require('./api/emprestimos');
 
 // Middlewares
 app.use(cors());
@@ -16,6 +18,8 @@ app.use('/uploads/capas', express.static(path.join(__dirname, '../uploads/capas'
 // Routers
 const copiasRouter = require('./api/copias');
 app.use('/api/copias', copiasRouter);
+
+app.use('/api/emprestimos', emprestimosRouter);
 
 const livrosRouter = require('./api/livros');
 app.use('/api/livros', livrosRouter);

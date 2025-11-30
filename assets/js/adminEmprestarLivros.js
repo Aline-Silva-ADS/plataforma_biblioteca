@@ -2,6 +2,74 @@
 // Busca livros conforme digitado no campo de busca
 
 document.addEventListener('DOMContentLoaded', function () {
+        // --- Empréstimo ao clicar em Concluir ---
+        const btnConcluir = document.querySelector('.btn.btn-submit');
+        btnConcluir && btnConcluir.addEventListener('click', async function () {
+            // Pega dados do livro
+            const livroTitulo = document.querySelectorAll('.search-section .info-fields .info-value')[0].textContent;
+            const livro = livrosData.find(l => l.titulo === livroTitulo);
+            if (!livro) {
+                Swal.fire({ icon: 'warning', title: 'Selecione um livro válido.' });
+                return;
+            }
+            // Pega dados do aluno
+            const alunoNome = document.querySelectorAll('.search-section .info-fields')[1].querySelectorAll('.info-value')[0].textContent;
+            const alunoRA = document.querySelectorAll('.search-section .info-fields')[1].querySelectorAll('.info-value')[1].textContent;
+            if (!alunoNome || !alunoRA) {
+                Swal.fire({ icon: 'warning', title: 'Selecione um aluno válido.' });
+                return;
+            }
+            // Buscar id_usuario pelo RA
+            let id_usuario = null;
+            try {
+                const resp = await fetch(`http://127.0.0.1:3001/api/users/ra/${alunoRA}`);
+                const data = await resp.json();
+                if (data && data.usuario) id_usuario = data.usuario.id_usuario;
+            } catch {}
+            if (!id_usuario) {
+                Swal.fire({ icon: 'error', title: 'Usuário não encontrado.' });
+                return;
+            }
+            // Data de devolução prevista
+            const dateInput = document.querySelector('.date-section .date-input');
+            const data_devolucao_prevista = dateInput ? dateInput.value : '';
+            if (!data_devolucao_prevista) {
+                Swal.fire({ icon: 'warning', title: 'Informe a data de devolução.' });
+                return;
+            }
+            // Chama endpoint de empréstimo
+            try {
+                const resp = await fetch('http://127.0.0.1:3001/api/emprestimos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id_usuario, id_livro: livro.id_livro, data_devolucao_prevista })
+                });
+                const result = await resp.json();
+                if (result.success) {
+                    Swal.fire({ icon: 'success', title: 'Empréstimo realizado com sucesso!' }).then(() => {
+                        // Limpar campos do formulário
+                        searchInput.value = '';
+                        mostrarInfoLivro(null);
+                        // Limpar aluno
+                        const alunoFields = document.querySelectorAll('.search-section .info-fields')[1];
+                        if (alunoFields) {
+                            alunoFields.querySelectorAll('.info-value')[0].textContent = '';
+                            alunoFields.querySelectorAll('.info-value')[1].textContent = '';
+                        }
+                        // Limpar campo RA
+                        const raInput = document.querySelectorAll('.search-section .search-box .input')[1];
+                        if (raInput) raInput.value = '';
+                        // Limpar data de devolução
+                        const dateInput = document.querySelector('.date-section .date-input');
+                        if (dateInput) dateInput.value = '';
+                    });
+                } else {
+                    Swal.fire({ icon: 'error', title: 'Erro ao emprestar', text: result.error || 'Tente novamente.' });
+                }
+            } catch (e) {
+                Swal.fire({ icon: 'error', title: 'Erro ao emprestar', text: 'Tente novamente.' });
+            }
+        });
     const searchInput = document.querySelectorAll('.search-section .search-box .input')[0];
     const infoFields = document.querySelectorAll('.search-section .info-fields')[0];
     const searchBox = document.querySelectorAll('.search-section .search-box')[0];
