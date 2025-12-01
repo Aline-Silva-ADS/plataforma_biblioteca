@@ -2,6 +2,39 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
+// GET /api/emprestimos?usuario=ID - lista todos os empréstimos de um usuário
+router.get('/', async (req, res) => {
+  const { usuario } = req.query;
+  if (!usuario) return res.status(400).json({ error: 'usuario é obrigatório' });
+  const conn = await pool.getConnection();
+  try {
+    const [rows] = await conn.query(`
+      SELECT e.id_emprestimo, e.data_emprestimo, e.data_devolucao_prevista, e.data_devolucao_real, e.status,
+             l.titulo, l.autor
+      FROM emprestimos e
+      JOIN copias c ON e.id_copia = c.id_copia
+      JOIN livros l ON c.id_livro = l.id_livro
+      WHERE e.id_usuario = ?
+      ORDER BY e.data_emprestimo DESC
+    `, [usuario]);
+    // Marcar como atrasado se status for emprestado e data_devolucao_prevista < hoje
+    const hoje = new Date();
+    for (const emp of rows) {
+      if (emp.status === 'emprestado' && emp.data_devolucao_prevista && new Date(emp.data_devolucao_prevista) < hoje) {
+        emp.status = 'atrasado';
+      }
+    }
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  } finally {
+    conn.release();
+  }
+});
+const express = require('express');
+const router = express.Router();
+const pool = require('../config/db');
+
 // GET /api/emprestimos/historico - lista todo o histórico de empréstimos
 router.get('/historico', async (req, res) => {
   const conn = await pool.getConnection();

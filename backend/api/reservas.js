@@ -40,4 +40,50 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+// PATCH /api/reservas/expirar - expira reservas com mais de 8 horas e libera cópias
+router.patch('/expirar', async (req, res) => {
+  const conn = await pool.getConnection();
+  try {
+    // Seleciona reservas ativas vencidas
+    const [expiradas] = await conn.query(`
+      SELECT r.id_reserva, r.id_livro
+      FROM reservas r
+      WHERE r.status = 'ativa' AND r.prazo_validade < NOW()
+    `);
+
+    if (expiradas.length === 0) {
+      return res.json({ expiradas: 0, livros_liberados: 0 });
+    }
+
+    // Expira as reservas
+    const ids = expiradas.map(r => r.id_reserva);
+    await conn.query(
+      `UPDATE reservas SET status = 'expirada' WHERE id_reserva IN (${ids.map(() => '?').join(',')})`,
+      ids
+    );
+
+    // Libera as cópias dos livros (deixa disponíveis para empréstimo)
+    // Só libera se não houver outra reserva ativa para o mesmo livro
+    for (const reserva of expiradas) {
+      const [outras] = await conn.query(
+        'SELECT COUNT(*) as total FROM reservas WHERE id_livro = ? AND status = "ativa"',
+        [reserva.id_livro]
+      );
+      if (outras[0].total === 0) {
+        await conn.query(
+          'UPDATE copias SET status = "disponivel" WHERE id_livro = ? AND status = "reservado"',
+          [reserva.id_livro]
+        );
+      }
+    }
+
+    res.json({ expiradas: ids.length, livros_liberados: expiradas.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  } finally {
+    conn.release();
+  }
+});
+
 module.exports = router;
