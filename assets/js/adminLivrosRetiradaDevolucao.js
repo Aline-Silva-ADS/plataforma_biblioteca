@@ -136,6 +136,73 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       });
     });
+
+    // Adiciona evento para os botões de devolução
+    tableBody.querySelectorAll('.btn-info').forEach((btn, idx) => {
+      btn.addEventListener('click', async (e) => {
+        const tr = btn.closest('tr');
+        // Buscar id_emprestimo pela linha
+        const ra = tr.querySelector('td[data-label="RA"] strong').textContent;
+        const nomeLivro = tr.querySelector('td[data-label="Título do livro"]').textContent;
+        let idEmprestimo = null;
+        for (const emp of emprestimosData.emprestimos) {
+          if (emp.ra_aluno == ra && emp.nome_livro == nomeLivro) {
+            idEmprestimo = emp.id_emprestimo;
+            break;
+          }
+        }
+        if (!idEmprestimo) {
+          exibirMensagemNaTabela(tr, 'ID do empréstimo não encontrado.', 'danger');
+          return;
+        }
+        try {
+          const res = await fetch(`http://localhost:3001/api/emprestimos/${idEmprestimo}/devolver`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+          });
+          const data = await res.json();
+          if (!data.success) {
+            exibirMensagemNaTabela(tr, 'Erro ao registrar devolução: ' + (data.error || ''), 'danger');
+            return;
+          }
+          exibirMensagemNaTabela(tr, 'Devolução confirmada!', 'success');
+          setTimeout(() => {
+            // Remove a linha da tabela e a mensagem
+            const msg = tr.nextElementSibling;
+            if (msg && msg.classList.contains('msg-feedback')) {
+              msg.remove();
+            }
+            tr.remove();
+          }, 1200);
+        } catch (err) {
+          exibirMensagemNaTabela(tr, 'Erro ao registrar devolução: ' + err.message, 'danger');
+        }
+      });
+    });
+
+    // Filtro pelo RA
+    const raInput = document.querySelector('.search-box-table .input');
+    raInput.addEventListener('input', function () {
+      const raBusca = this.value.trim().toLowerCase();
+      const trs = tableBody.querySelectorAll('tr');
+      trs.forEach(tr => {
+        const raCell = tr.querySelector('td[data-label="RA"] strong');
+        if (!raCell) return;
+        const ra = raCell.textContent.trim().toLowerCase();
+        if (ra.includes(raBusca)) {
+          tr.style.display = '';
+          // também exibe a mensagem de feedback se existir
+          if (tr.nextElementSibling && tr.nextElementSibling.classList.contains('msg-feedback')) {
+            tr.nextElementSibling.style.display = '';
+          }
+        } else {
+          tr.style.display = 'none';
+          if (tr.nextElementSibling && tr.nextElementSibling.classList.contains('msg-feedback')) {
+            tr.nextElementSibling.style.display = 'none';
+          }
+        }
+      });
+    });
   } catch (err) {
     tableBody.innerHTML = `<tr><td colspan="7">Erro ao carregar dados: ${err.message}</td></tr>`;
   }

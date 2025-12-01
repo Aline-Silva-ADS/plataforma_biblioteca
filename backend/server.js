@@ -17,10 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 // Servir arquivos de capa de livro
 app.use('/uploads/capas', express.static(path.join(__dirname, '../uploads/capas')));
 
+
 // Routers
 const copiasRouter = require('./api/copias');
 app.use('/api/copias', copiasRouter);
-
 
 app.use('/api/emprestimos', emprestimosRouter);
 app.use('/api/retiradas', retiradasRouter);
@@ -36,6 +36,10 @@ app.use('/api/categorias', categoriasRouter);
 
 const reservasRouter = require('./api/reservas');
 app.use('/api/reservas', reservasRouter);
+
+// Nova rota para dashboard
+const statsRouter = require('./api/stats');
+app.use('/api/stats', statsRouter);
 
 // Porta
 const PORT = process.env.PORT || 3000;

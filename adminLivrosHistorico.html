@@ -66,12 +66,13 @@
         <!-- Main Content -->
         <main class="content">
             <div class="card card-table card-mobile-none">
+
                 <div class="card-table-header">
                     <div class="table-text">
                         <h2 class="title text-start">Histórico de empréstimos</h2>
                     </div>
                     <div class="search-box-table">
-                        <input type="text" class="input" placeholder="Buscar...">
+                        <input type="text" class="input" id="search-ra" placeholder="Buscar pelo RA">
                     </div>
                 </div>
 
@@ -86,24 +87,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td data-label="Título do livro">Título do livro</td>
-                                <td data-label="RA">2023101</td>
-                                <td data-label="Data de solicitação">12/07/2025</td>
-                                <td data-label="Data de devolução">12/07/2025</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Título do livro">Título do livro</td>
-                                <td data-label="RA">2023101</td>
-                                <td data-label="Data de solicitação">12/07/2025</td>
-                                <td data-label="Data de devolução">12/07/2025</td>
-                            </tr>
                         </tbody>
                     </table>
+                    <div id="pagination" class="pagination-container" style="margin-top: 16px; display: flex; justify-content: center;"></div>
                 </div>
             </div>
         </main>
     </div>
 </body>
-  <script src="assets/js/auth.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/logout.js"></script>
+  <script src="assets/js/adminLivrosHistorico.js"></script>
 </html>

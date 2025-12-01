@@ -64,16 +64,7 @@
 
         <!-- Main Content -->
         <main class="content">
-            <!-- Search Bar -->
-
-                <section class="search-box search-container">
-                    <input type="text" class="search-input" placeholder="Busque o livro por título ou autor">
-                    <button class="search-btn" aria-label="Buscar">
-                        <span class="material-symbols-outlined">search</span>
-                    </button>
-                </section>
-        
-
+           
             <!-- Stats Cards -->
             <div class="stats-grid">
 
@@ -83,7 +74,7 @@
                     </div>
                     <div class="card-info">
                         <h3 class="stat-label">Usuários</h3>
-                        <p class="stat-value">1.245</p>
+                        <p class="stat-value" id="stat-usuarios">1.245</p>
                     </div>
                 </div>
 
@@ -93,7 +84,7 @@
                     </div>
                     <div class="card-info">
                         <h3 class="stat-label">Livros</h3>
-                        <p class="stat-value">346</p>
+                        <p class="stat-value" id="stat-livros">346</p>
                     </div>
                 </div>
 
@@ -103,7 +94,7 @@
                     </div>
                     <div class="card-info">
                         <h3 class="stat-label">Emprestados</h3>
-                        <p class="stat-value">98</p>
+                        <p class="stat-value" id="stat-emprestados">98</p>
                     </div>
                 </div>
 
@@ -113,7 +104,7 @@
                     </div>
                     <div class="card-info">
                         <h3 class="stat-label">Atrasados</h3>
-                        <p class="stat-value">4</p>
+                        <p class="stat-value" id="stat-atrasados">4</p>
                     </div>
                 </div>
             </div>
@@ -121,17 +112,18 @@
             <!-- Shortcuts Section -->
             <section class="shortcuts-section">
                 <h2 class="title section-title">Atalhos</h2>
-                <div class="shortcuts-grid">
-                    <a href="adminEmprestarLivros.html" class="shortcut-btn">Emprestar livros</a>
-                    <a href="adminLivrosRetiradaDevolucao.html" class="shortcut-btn">Retirada e Devolução</a>
-                    <a href="adminLivrosListar.html" class="shortcut-btn">Todos os livros</a>
-                    <a href="adminValidarUsuarios.html" class="shortcut-btn">Verificar usuários</a>
+                <div class="shortcuts-grid" style="justify-content: center; text-align: center;">
+                    <button class="shortcut-btn" onclick="window.location.href='adminEmprestarLivros.html'">Emprestar livros</button>
+                    <button class="shortcut-btn" onclick="window.location.href='adminLivrosRetiradaDevolucao.html'">Retirada e Devolução</button>
+                    <button class="shortcut-btn" onclick="window.location.href='adminLivrosListar.html'">Todos os livros</button>
+                    <button class="shortcut-btn" onclick="window.location.href='adminValidarUsuarios.html'">Verificar usuários</button>
                 </div>
             </section>
         </main>
     </div>
     <script src="assets/js/script.js"></script>
 </body>
-  <script src="assets/js/auth.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/logout.js"></script>
 
 </html>

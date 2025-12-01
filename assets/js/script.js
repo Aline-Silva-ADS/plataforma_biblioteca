@@ -2,7 +2,24 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('script.js carregado e DOM pronto'); // Apenas uma mensagem de teste no console
 
-    // ===============================
+        // ===============================
+        // 📊 Dashboard - Atualizar cards de estatísticas
+        // ===============================
+        fetch('http://localhost:3001/api/stats/dashboard')
+            .then(res => res.json())
+            .then(stats => {
+                if (stats && typeof stats === 'object') {
+                    const usuarios = document.getElementById('stat-usuarios');
+                    const livros = document.getElementById('stat-livros');
+                    const emprestados = document.getElementById('stat-emprestados');
+                    const atrasados = document.getElementById('stat-atrasados');
+                    if (usuarios) usuarios.textContent = stats.usuarios;
+                    if (livros) livros.textContent = stats.livros;
+                    if (emprestados) emprestados.textContent = stats.emprestados;
+                    if (atrasados) atrasados.textContent = stats.atrasados;
+                }
+            })
+            .catch(() => {/* manter valores estáticos em caso de erro */});
     // 📱 Menu lateral (drawer mobile)
     // ===============================
     const btn = document.querySelector('.hamburger'); // Botão do menu (ícone "☰")
