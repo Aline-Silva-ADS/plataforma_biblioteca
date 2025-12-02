@@ -38,5 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.detail-row .detail-value')[10].textContent = livro.localizacao || '';
             // Sinopse
             document.querySelector('.synopsis-box').textContent = livro.descricao || '';
+            // Capa
+            const coverImg = document.getElementById('book-cover-admin');
+            if (coverImg && livro.capa) {
+                coverImg.src = livro.capa.startsWith('uploads/') ? '../' + livro.capa : livro.capa;
+                coverImg.style.display = 'block';
+            } else if (coverImg) {
+                coverImg.style.display = 'none';
+            }
         });
 });

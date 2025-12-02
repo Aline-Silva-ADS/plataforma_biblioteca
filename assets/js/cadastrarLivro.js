@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!form) return;
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
+        console.log('submit interceptado');
         const formData = new FormData(form);
         // Adiciona a capa (caso não esteja no form)
         const coverInput = document.getElementById('coverInput');
@@ -52,13 +53,21 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const result = await resp.json();
             if (result.success) {
-                await Swal.fire({
+                console.log('Swal exibido');
+                Swal.fire({
                     icon: 'success',
                     title: 'Livro cadastrado!',
-                    text: 'Cadastro realizado com sucesso.'
+                    text: 'Cadastro realizado com sucesso.',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    console.log('Reload após OK no Swal');
+                    window.location.reload();
                 });
-                window.location.reload();
             } else {
+                console.log('Erro ao cadastrar livro:', result);
                 Swal.fire({
                     icon: 'error',
                     title: 'Erro ao cadastrar',
@@ -66,11 +75,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         } catch (err) {
+            console.error('Erro de conexão:', err);
             Swal.fire({
                 icon: 'error',
                 title: 'Erro de conexão',
                 text: 'Não foi possível conectar ao servidor.'
             });
         }
+    return false;
     });
 });

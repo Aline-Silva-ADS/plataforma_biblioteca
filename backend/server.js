@@ -42,7 +42,7 @@ const statsRouter = require('./api/stats');
 app.use('/api/stats', statsRouter);
 
 // Porta
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () =>
   console.log(`Backend API running on port ${PORT} (process.env.PORT=${process.env.PORT})`)
 );

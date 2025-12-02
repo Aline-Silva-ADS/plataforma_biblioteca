@@ -5,7 +5,7 @@ const pool = require('../config/db');
 router.get('/dashboard', async (req, res) => {
   const conn = await pool.getConnection();
   try {
-    const [[{ total_usuarios }]] = await conn.query('SELECT COUNT(*) as total_usuarios FROM usuarios');
+    const [[{ total_usuarios }]] = await conn.query("SELECT COUNT(*) as total_usuarios FROM usuarios WHERE tipo_usuario = 'aluno'");
     const [[{ total_livros }]] = await conn.query('SELECT COUNT(*) as total_livros FROM livros');
     const [[{ total_emprestados }]] = await conn.query('SELECT COUNT(*) as total_emprestados FROM emprestimos WHERE status = "emprestado"');
     const [[{ total_atrasados }]] = await conn.query('SELECT COUNT(*) as total_atrasados FROM emprestimos WHERE status = "emprestado" AND data_devolucao_prevista < NOW()');

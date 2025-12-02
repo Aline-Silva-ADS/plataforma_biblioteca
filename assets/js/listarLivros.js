@@ -3,27 +3,43 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const tableBody = document.querySelector('#userTable tbody');
+    const searchInput = document.querySelector('.search-box-table input');
     if (!tableBody) return;
+
+    let livrosCache = [];
+
+    function renderTable(livros) {
+        tableBody.innerHTML = '';
+        livros.forEach(livro => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td data-label="Título do livro">${livro.titulo}</td>
+                <td data-label="Autor(es)">${livro.autores ? livro.autores.join(', ') : ''}</td>
+                <td data-label="Quantidade">${livro.quantidade_copias}</td>
+                <td data-label="Ações">
+                    <button class="btn btn-table btn-success ver-mais" data-id="${livro.id_livro}">Ver Mais</button>
+                </td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    }
 
     fetch('http://127.0.0.1:3001/api/livros')
         .then(resp => resp.json())
         .then(data => {
             if (Array.isArray(data.livros)) {
-                tableBody.innerHTML = '';
-                data.livros.forEach(livro => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td data-label="Título do livro">${livro.titulo}</td>
-                        <td data-label="Autor(es)">${livro.autores ? livro.autores.join(', ') : ''}</td>
-                        <td data-label="Quantidade">${livro.quantidade_total}</td>
-                        <td data-label="Ações">
-                            <button class="btn btn-table btn-success ver-mais" data-id="${livro.id_livro}">Ver Mais</button>
-                        </td>
-                    `;
-                    tableBody.appendChild(tr);
-                });
+                livrosCache = data.livros;
+                renderTable(livrosCache);
             }
         });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const value = searchInput.value.trim().toLowerCase();
+            const filtered = livrosCache.filter(livro => livro.titulo.toLowerCase().includes(value));
+            renderTable(filtered);
+        });
+    }
 
     tableBody.addEventListener('click', function (e) {
         if (e.target.classList.contains('ver-mais')) {

@@ -6,8 +6,9 @@ const pool = require('../config/db');
 router.get('/', async (req, res) => {
   const { usuario } = req.query;
   if (!usuario) return res.status(400).json({ error: 'usuario é obrigatório' });
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     const [rows] = await conn.query(`
       SELECT e.id_emprestimo, e.data_emprestimo, e.data_devolucao_prevista, e.data_devolucao_real, e.status,
              l.titulo, l.autor
@@ -28,17 +29,15 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   } finally {
-    conn.release();
+    if (conn) conn.release();
   }
 });
-const express = require('express');
-const router = express.Router();
-const pool = require('../config/db');
 
 // GET /api/emprestimos/historico - lista todo o histórico de empréstimos
 router.get('/historico', async (req, res) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     // Paginação
     let page = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
@@ -80,19 +79,20 @@ router.get('/historico', async (req, res) => {
     `, [...params, limit, offset]);
 
     res.json({ emprestimos: rows, total });
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   } finally {
-    conn.release();
+    if (conn) conn.release();
   }
 });
 
 // PATCH /api/emprestimos/:id/devolver - devolve um empréstimo
 router.patch('/:id/devolver', async (req, res) => {
   const { id } = req.params;
-  const conn = await pool.getConnection();
-
+  let conn;
   try {
+    conn = await pool.getConnection();
     await conn.beginTransaction();
 
     await conn.query(
@@ -125,10 +125,10 @@ router.patch('/:id/devolver', async (req, res) => {
     res.json({ success: true });
 
   } catch (err) {
-    await conn.rollback();
+    if (conn) await conn.rollback();
     res.status(500).json({ error: err.message });
   } finally {
-    conn.release();
+    if (conn) conn.release();
   }
 });
 
@@ -142,9 +142,9 @@ router.post('/', async (req, res) => {
     });
   }
 
-  const conn = await pool.getConnection();
-
+  let conn;
   try {
+    conn = await pool.getConnection();
     await conn.beginTransaction();
 
     const [copias] = await conn.query(
@@ -164,7 +164,7 @@ router.post('/', async (req, res) => {
 
     await conn.query(
       'INSERT INTO reservas (id_usuario, id_livro, data_reserva, prazo_validade, status) VALUES (?, ?, ?, ?, ?)',
-      [id_usuario, id_livro, dataReserva, prazoValidade, 'ativa']
+      [id_usuario, id_livro, dataReserva, prazoValidade, 'emprestado']
     );
 
     await conn.query(
@@ -181,10 +181,10 @@ router.post('/', async (req, res) => {
     res.json({ success: true });
 
   } catch (err) {
-    await conn.rollback();
+    if (conn) await conn.rollback();
     res.status(500).json({ error: err.message });
   } finally {
-    conn.release();
+    if (conn) conn.release();
   }
 });
 
