@@ -18,6 +18,27 @@ router.patch('/:id/emprestar', async (req, res) => {
 });
 
 // POST /api/reservas - cria uma nova reserva
+// GET /api/reservas?usuario=ID - lista todas as reservas de um usuário
+router.get('/', async (req, res) => {
+  const { usuario } = req.query;
+  if (!usuario) return res.status(400).json({ error: 'usuario é obrigatório' });
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const [rows] = await conn.query(`
+      SELECT r.id_reserva, r.id_livro, r.prazo_validade, r.status, l.titulo
+      FROM reservas r
+      JOIN livros l ON r.id_livro = l.id_livro
+      WHERE r.id_usuario = ?
+      ORDER BY r.data_reserva DESC
+    `, [usuario]);
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  } finally {
+    if (conn) conn.release();
+  }
+});
 router.post('/', async (req, res) => {
   const { id_usuario, id_livro } = req.body;
   if (!id_usuario || !id_livro) {

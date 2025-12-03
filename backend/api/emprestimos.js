@@ -9,23 +9,53 @@ router.get('/', async (req, res) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const [rows] = await conn.query(`
-      SELECT e.id_emprestimo, e.data_emprestimo, e.data_devolucao_prevista, e.data_devolucao_real, e.status,
-             l.titulo, l.autor
+    // Buscar empréstimos
+    const [emprestimos] = await conn.query(`
+      SELECT e.id_emprestimo, e.id_copia, c.id_livro, e.data_emprestimo, e.data_devolucao_prevista, e.data_devolucao_real, e.status,
+             l.titulo
       FROM emprestimos e
       JOIN copias c ON e.id_copia = c.id_copia
       JOIN livros l ON c.id_livro = l.id_livro
       WHERE e.id_usuario = ?
       ORDER BY e.data_emprestimo DESC
     `, [usuario]);
+
     // Marcar como atrasado se status for emprestado e data_devolucao_prevista < hoje
     const hoje = new Date();
-    for (const emp of rows) {
+    for (const emp of emprestimos) {
       if (emp.status === 'emprestado' && emp.data_devolucao_prevista && new Date(emp.data_devolucao_prevista) < hoje) {
         emp.status = 'atrasado';
       }
     }
-    res.json(rows);
+
+    // Buscar reservas ativas
+    const [reservas] = await conn.query(`
+      SELECT r.id_reserva, r.id_livro, r.prazo_validade AS data_devolucao_prevista, r.status, l.titulo
+      FROM reservas r
+      JOIN livros l ON r.id_livro = l.id_livro
+      WHERE r.id_usuario = ? AND r.status = 'ativa'
+      ORDER BY r.data_reserva DESC
+    `, [usuario]);
+
+    // Adicionar campo especial para diferenciar reservas
+    const reservasFormatadas = reservas.map(r => ({
+      ...r,
+      status: 'pendente',
+      id_emprestimo: null,
+      id_copia: null,
+      data_emprestimo: null,
+      data_devolucao_real: null
+    }));
+
+    // Unir empréstimos e reservas pendentes
+    const historico = [...emprestimos, ...reservasFormatadas];
+    // Ordenar por data de empréstimo ou data de reserva (data_emprestimo pode ser null)
+    historico.sort((a, b) => {
+      const dataA = a.data_emprestimo ? new Date(a.data_emprestimo) : new Date(a.data_devolucao_prevista);
+      const dataB = b.data_emprestimo ? new Date(b.data_emprestimo) : new Date(b.data_devolucao_prevista);
+      return dataB - dataA;
+    });
+    res.json(historico);
   } catch (err) {
     res.status(500).json({ error: err.message });
   } finally {

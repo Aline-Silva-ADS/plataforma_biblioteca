@@ -2,7 +2,7 @@
 // Popula a grid de livros na home do usuário
 
 document.addEventListener('DOMContentLoaded', function () {
-    const grid = document.querySelector('.books-grid');
+    const grid = document.querySelector('.static-books-grid');
     const searchInput = document.querySelector('.search-input');
     const searchBtn = document.querySelector('.search-btn');
     let livrosData = [];
@@ -16,13 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
         livros.forEach(livro => {
             const card = document.createElement('div');
             card.className = 'book-card';
+            // Cria elemento de capa como <img> para permitir fallback
+            const coverImg = document.createElement('img');
+            coverImg.className = 'book-cover';
+            coverImg.src = livro.capa ? '/' + livro.capa : '/uploads/capas/default-cover.png';
+            coverImg.alt = livro.titulo;
+            coverImg.onerror = function() {
+                this.onerror = null;
+                this.src = '/uploads/capas/default-cover.png';
+            };
+
             card.innerHTML = `
-                <div class="book-cover" style="background-image:url('${livro.capa ? '/' + livro.capa : 'assets/image/default-cover.png'}')"></div>
                 <div class="book-info">
                     <div class="book-title">${livro.titulo}</div>
                     <div class="book-author">${livro.autores ? livro.autores.join(', ') : ''}</div>
                 </div>
             `;
+            card.insertBefore(coverImg, card.firstChild);
             card.style.cursor = 'pointer';
             card.addEventListener('click', function () {
                 window.location.href = `usuarioLivroInformacoes.html?id=${livro.id_livro}`;
